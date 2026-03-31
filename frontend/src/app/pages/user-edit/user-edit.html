@@ -88,7 +88,9 @@
         </ion-select>
       </ion-item>
       <app-field-errors [control]="form.get('role')" [messages]="roleErrors" />
-
+      <ion-button expand="block" fill="outline" color="danger" class="ion-margin-top" (click)="openDeleteModal()">
+        Usuń użytkownika
+      </ion-button>
       <ion-button expand="block" type="submit" [disabled]="saving()" class="ion-margin-top">
         @if (saving()) {
           <ion-spinner name="crescent" />
@@ -97,9 +99,7 @@
         }
       </ion-button>
 
-      <ion-button expand="block" fill="outline" color="danger" class="ion-margin-top" (click)="openDeleteModal()">
-        Usuń użytkownika
-      </ion-button>
+
     </form>
   }
 
@@ -113,7 +113,7 @@
       <ion-content class="ion-padding">
         <p>Czy na pewno chcesz usunąć tego użytkownika?</p>
         <div class="delete-modal-actions">
-          <ion-button fill="clear" color="primary" (click)="closeDeleteModal()">Nie</ion-button>
+          <ion-button fill="outline" color="danger" (click)="closeDeleteModal()">Nie</ion-button>
           <ion-button color="danger" [disabled]="deleting()" (click)="confirmDelete()">
             @if (deleting()) {
               Usuwanie...
