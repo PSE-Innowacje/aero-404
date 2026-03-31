@@ -8,7 +8,7 @@ import {
   ValidationErrors,
   Validators,
 } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import {
   AlertController,
   IonBackButton,
@@ -21,6 +21,7 @@ import {
   IonInput,
   IonItem,
   IonLabel,
+  IonList,
   IonProgressBar,
   IonSelect,
   IonSelectOption,
@@ -87,7 +88,9 @@ const STATUS_COLORS: Record<FlightOrderStatus, string> = {
     IonInput,
     IonItem,
     IonLabel,
+    IonList,
     IonProgressBar,
+    RouterLink,
     IonSelect,
     IonSelectOption,
     IonSpinner,

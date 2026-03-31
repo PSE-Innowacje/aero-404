@@ -42,6 +42,20 @@
           </ion-badge>
         </ion-item>
 
+        @if (o.plannedOperations.length > 0) {
+          <p class="ion-padding-start"><strong>Powiązane operacje:</strong></p>
+          <ion-list>
+            @for (op of o.plannedOperations; track op.id) {
+              <ion-item button [routerLink]="'/operations/edit/' + op.id">
+                <ion-label>
+                  <h3>{{ op.autoNumber }}</h3>
+                  <p>{{ op.shortDescription }}</p>
+                </ion-label>
+              </ion-item>
+            }
+          </ion-list>
+        }
+
         <div class="status-actions ion-margin-top ion-margin-bottom">
           @if (canSubmit()) {
             <ion-button
