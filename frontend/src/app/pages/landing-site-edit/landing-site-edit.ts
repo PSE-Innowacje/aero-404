@@ -1,4 +1,6 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { map, startWith } from 'rxjs';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import {
@@ -20,6 +22,7 @@ import {
 
 import { AirfieldApiService } from '../../services/airfield-api.service';
 import { ErrorMessage, FieldErrorsComponent } from '../../shared/field-errors/field-errors';
+import { MapLandingComponent } from '../../shared/map-landing/map-landing';
 import { getErrorMessage } from '../../shared/utils/error-messages';
 
 @Component({
@@ -27,6 +30,7 @@ import { getErrorMessage } from '../../shared/utils/error-messages';
   imports: [
     ReactiveFormsModule,
     FieldErrorsComponent,
+    MapLandingComponent,
     IonBackButton,
     IonButton,
     IonButtons,
@@ -81,11 +85,29 @@ export class LandingSiteEditPage implements OnInit {
     longitude: [null, [Validators.required, Validators.min(-180), Validators.max(180)]],
   });
 
+  mapLatitude = toSignal(
+    this.form.controls['latitude'].valueChanges.pipe(
+      startWith(this.form.controls['latitude'].value),
+      map((v) => (v !== null && v !== '' ? +v : undefined)),
+    ),
+  );
+
+  mapLongitude = toSignal(
+    this.form.controls['longitude'].valueChanges.pipe(
+      startWith(this.form.controls['longitude'].value),
+      map((v) => (v !== null && v !== '' ? +v : undefined)),
+    ),
+  );
+
   private airfieldId!: number;
 
   ngOnInit(): void {
     this.airfieldId = Number(this.route.snapshot.paramMap.get('id'));
     this.loadAirfield();
+  }
+
+  onMapCoordsChange(coords: { latitude: number; longitude: number }): void {
+    this.form.patchValue({ latitude: coords.latitude, longitude: coords.longitude });
   }
 
   onSubmit(): void {

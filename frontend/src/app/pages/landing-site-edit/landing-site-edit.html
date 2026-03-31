@@ -83,6 +83,12 @@
       </ion-button>
     </form>
 
+    <app-map-landing
+      [latitude]="mapLatitude()"
+      [longitude]="mapLongitude()"
+      (coordinatesChange)="onMapCoordsChange($event)"
+    />
+
     <ion-modal [isOpen]="deleteModalOpen()" (didDismiss)="closeDeleteModal()" [cssClass]="'delete-modal'">
       <ng-template>
         <ion-header>
