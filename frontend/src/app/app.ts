@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ViewChild } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import {
   IonApp,
@@ -62,6 +62,7 @@ addIcons({
   styleUrl: './app.scss',
 })
 export class App implements OnInit {
+  @ViewChild(IonMenu) menu!: IonMenu;
   private userDataService = inject(UserDataService);
   private router = inject(Router);
 
@@ -69,7 +70,8 @@ export class App implements OnInit {
     this.userDataService.loadFromStorage();
   }
 
-  logout() {
+  async logout() {
+    await this.menu.close();
     this.userDataService.clearUser();
     this.router.navigate(['/login']);
   }

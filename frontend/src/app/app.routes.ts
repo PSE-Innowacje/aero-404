@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'operations', pathMatch: 'full' },
@@ -14,29 +15,35 @@ export const routes: Routes = [
   },
   {
     path: 'admin/helicopters',
+    canActivate: [authGuard],
     loadComponent: () =>
       import('./pages/helicopters/helicopters').then((m) => m.HelicoptersPage),
   },
   {
     path: 'admin/crew',
+    canActivate: [authGuard],
     loadComponent: () => import('./pages/crew/crew').then((m) => m.CrewPage),
   },
   {
     path: 'admin/landing-sites',
+    canActivate: [authGuard],
     loadComponent: () =>
       import('./pages/landing-sites/landing-sites').then((m) => m.LandingSitesPage),
   },
   {
     path: 'admin/users',
+    canActivate: [authGuard],
     loadComponent: () => import('./pages/users/users').then((m) => m.UsersPage),
   },
   {
     path: 'operations',
+    canActivate: [authGuard],
     loadComponent: () =>
       import('./pages/operations/operations').then((m) => m.OperationsPage),
   },
   {
     path: 'flight-tickets',
+    canActivate: [authGuard],
     loadComponent: () =>
       import('./pages/flight-tickets/flight-tickets').then((m) => m.FlightTicketsPage),
   },
