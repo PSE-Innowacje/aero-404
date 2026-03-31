@@ -70,6 +70,7 @@ export class App implements OnInit {
   private destroyRef = inject(DestroyRef);
 
   isLoggedIn = this.userDataService.isLoggedIn;
+  role = this.userDataService.role;
 
   ngOnInit() {
     this.userDataService.loadFromStorage();

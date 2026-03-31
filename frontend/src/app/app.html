@@ -8,6 +8,7 @@
         </ion-toolbar>
       </ion-header>
       <ion-content>
+        @if (role() !== 'PLANNER') {
         <ion-list>
           <ion-list-header>Administracja</ion-list-header>
           <ion-item
@@ -43,6 +44,7 @@
             <ion-label>Użytkownicy</ion-label>
           </ion-item>
         </ion-list>
+        }
 
         <ion-list>
           <ion-list-header>Planowanie operacji</ion-list-header>
@@ -56,6 +58,7 @@
           </ion-item>
         </ion-list>
 
+        @if (role() !== 'PLANNER') {
         <ion-list>
           <ion-list-header>Zlecenia na lot</ion-list-header>
           <ion-item
@@ -67,6 +70,7 @@
             <ion-label>Lista zleceń</ion-label>
           </ion-item>
         </ion-list>
+        }
         <ion-list>
           <ion-list-header>Użytkownik</ion-list-header>
           <ion-item button (click)="logout()">
