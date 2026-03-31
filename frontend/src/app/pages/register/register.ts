@@ -26,7 +26,7 @@ function emailValidator(control: AbstractControl): ValidationErrors | null {
   const value = control.value;
   if (!value) return null;
   // letters, digits, . - @, exactly one @, after @ at least two letter groups separated by dot
-  const regex = /^[a-zA-Z0-9.\-]+@[a-zA-Z]+\.[a-zA-Z]+(\.[a-zA-Z]+)*$/;
+  const regex = /^[a-zA-Z0-9.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z]+(\.[a-zA-Z]+)*$/;
   return regex.test(value) ? null : { emailFormat: true };
 }
 
