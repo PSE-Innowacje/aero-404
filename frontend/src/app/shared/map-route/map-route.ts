@@ -86,7 +86,15 @@ export class MapRouteComponent implements AfterViewInit {
     }
 
     if (coords.length > 1) {
-      const lineFeature = new Feature({ geometry: new LineString(coords) });
+      let lineCoords = coords;
+      if (
+        lineCoords.length > 2 &&
+        lineCoords[0][0] === lineCoords[lineCoords.length - 1][0] &&
+        lineCoords[0][1] === lineCoords[lineCoords.length - 1][1]
+      ) {
+        lineCoords = lineCoords.slice(0, -1);
+      }
+      const lineFeature = new Feature({ geometry: new LineString(lineCoords) });
       lineFeature.setStyle(LINE_STYLE);
       this.vectorSource.addFeature(lineFeature);
     }
