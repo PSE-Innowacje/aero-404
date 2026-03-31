@@ -1,0 +1,110 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Rejestracja</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="register-wrapper">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      @if (errorMessage()) {
+        <ion-text color="danger">
+          <p class="error-banner">{{ errorMessage() }}</p>
+        </ion-text>
+      }
+
+      <ion-item>
+        <ion-input
+          label="Imię"
+          labelPlacement="stacked"
+          formControlName="firstName"
+          type="text"
+          maxlength="100"
+          placeholder="Wprowadź imię"
+        />
+      </ion-item>
+      @if (form.get('firstName')?.touched && form.get('firstName')?.errors) {
+        <ion-note color="danger" class="field-error">
+          @if (form.get('firstName')?.errors?.['required']) {
+            Imię jest wymagane.
+          } @else if (form.get('firstName')?.errors?.['maxlength']) {
+            Imię może mieć maksymalnie 100 znaków.
+          }
+        </ion-note>
+      }
+
+      <ion-item>
+        <ion-input
+          label="Nazwisko"
+          labelPlacement="stacked"
+          formControlName="lastName"
+          type="text"
+          maxlength="100"
+          placeholder="Wprowadź nazwisko"
+        />
+      </ion-item>
+      @if (form.get('lastName')?.touched && form.get('lastName')?.errors) {
+        <ion-note color="danger" class="field-error">
+          @if (form.get('lastName')?.errors?.['required']) {
+            Nazwisko jest wymagane.
+          } @else if (form.get('lastName')?.errors?.['maxlength']) {
+            Nazwisko może mieć maksymalnie 100 znaków.
+          }
+        </ion-note>
+      }
+
+      <ion-item>
+        <ion-input
+          label="Email"
+          labelPlacement="stacked"
+          formControlName="email"
+          type="email"
+          maxlength="100"
+          placeholder="Wprowadź email"
+        />
+      </ion-item>
+      @if (form.get('email')?.touched && form.get('email')?.errors) {
+        <ion-note color="danger" class="field-error">
+          @if (form.get('email')?.errors?.['required']) {
+            Email jest wymagany.
+          } @else if (form.get('email')?.errors?.['maxlength']) {
+            Email może mieć maksymalnie 100 znaków.
+          } @else if (form.get('email')?.errors?.['emailFormat']) {
+            Nieprawidłowy format email.
+          }
+        </ion-note>
+      }
+
+      <ion-item>
+        <ion-input
+          label="Hasło"
+          labelPlacement="stacked"
+          formControlName="password"
+          type="password"
+          placeholder="Minimum 8 znaków"
+        />
+      </ion-item>
+      @if (form.get('password')?.touched && form.get('password')?.errors) {
+        <ion-note color="danger" class="field-error">
+          @if (form.get('password')?.errors?.['required']) {
+            Hasło jest wymagane.
+          } @else if (form.get('password')?.errors?.['minlength']) {
+            Hasło musi mieć minimum 8 znaków.
+          }
+        </ion-note>
+      }
+
+      <ion-button expand="block" type="submit" [disabled]="loading()" class="submit-btn">
+        @if (loading()) {
+          <ion-spinner name="crescent" />
+        } @else {
+          Zarejestruj się
+        }
+      </ion-button>
+
+      <ion-button expand="block" fill="clear" routerLink="/login" class="login-link">
+        Masz już konto? Zaloguj się
+      </ion-button>
+    </form>
+  </div>
+</ion-content>
