@@ -26,7 +26,7 @@
           <ion-item button [routerLink]="'/flight-tickets/edit/' + order.id">
             <ion-label>
               <h2>{{ order.autoNumber }}</h2>
-              <p>{{ order.helicopter.regNumber }} · Pilot: {{ order.pilot?.lastName }}</p>
+              <p>{{ order.helicopter.regNumber }} · Pilot: {{ order.pilot.lastName }}</p>
               <p>
                 {{ order.departureAirfield.name }} → {{ order.arrivalAirfield.name }}
                 · {{ order.estimatedRouteKm }} km

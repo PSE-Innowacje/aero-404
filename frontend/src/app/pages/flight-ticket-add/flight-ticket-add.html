@@ -1,0 +1,171 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/flight-tickets" text="Wróć" />
+    </ion-buttons>
+    <ion-title>Dodaj zlecenie na lot</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-grid [fixed]="true">
+    @if (loadingData()) {
+      <ion-spinner name="crescent" />
+    } @else {
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        @if (errorMessage()) {
+          <ion-text color="danger">
+            <p class="error-banner">{{ errorMessage() }}</p>
+          </ion-text>
+        }
+
+        <ion-item>
+          <ion-select
+            label="Helikopter"
+            labelPlacement="stacked"
+            formControlName="helicopterId"
+            placeholder="Wybierz helikopter"
+          >
+            @for (h of helicopters(); track h.id) {
+              <ion-select-option [value]="h.id">
+                {{ h.regNumber }} — {{ h.type }}
+              </ion-select-option>
+            }
+          </ion-select>
+        </ion-item>
+        <app-field-errors [control]="form.get('helicopterId')" [messages]="helicopterIdErrors" />
+
+        <ion-item>
+          <ion-select
+            label="Pilot"
+            labelPlacement="stacked"
+            formControlName="pilotId"
+            placeholder="Opcjonalnie"
+          >
+            @for (p of pilots(); track p.id) {
+              <ion-select-option [value]="p.id">
+                {{ p.firstName }} {{ p.lastName }}
+              </ion-select-option>
+            }
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-select
+            label="Załoga"
+            labelPlacement="stacked"
+            formControlName="crewMemberIds"
+            placeholder="Opcjonalnie"
+            [multiple]="true"
+          >
+            @for (c of crewMembers(); track c.id) {
+              <ion-select-option [value]="c.id">
+                {{ c.firstName }} {{ c.lastName }} ({{ c.role }})
+              </ion-select-option>
+            }
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-select
+            label="Lotnisko wylotu"
+            labelPlacement="stacked"
+            formControlName="departureAirfieldId"
+            placeholder="Wybierz lotnisko"
+          >
+            @for (a of airfields(); track a.id) {
+              <ion-select-option [value]="a.id">{{ a.name }}</ion-select-option>
+            }
+          </ion-select>
+        </ion-item>
+        <app-field-errors
+          [control]="form.get('departureAirfieldId')"
+          [messages]="departureAirfieldIdErrors"
+        />
+
+        <ion-item>
+          <ion-select
+            label="Lotnisko przylotu"
+            labelPlacement="stacked"
+            formControlName="arrivalAirfieldId"
+            placeholder="Wybierz lotnisko"
+          >
+            @for (a of airfields(); track a.id) {
+              <ion-select-option [value]="a.id">{{ a.name }}</ion-select-option>
+            }
+          </ion-select>
+        </ion-item>
+        <app-field-errors
+          [control]="form.get('arrivalAirfieldId')"
+          [messages]="arrivalAirfieldIdErrors"
+        />
+
+        <ion-item>
+          <ion-select
+            label="Operacje"
+            labelPlacement="stacked"
+            formControlName="operationIds"
+            placeholder="Wybierz operacje"
+            [multiple]="true"
+          >
+            @for (op of operations(); track op.id) {
+              <ion-select-option [value]="op.id">
+                {{ op.autoNumber }} — {{ op.shortDescription }}
+              </ion-select-option>
+            }
+          </ion-select>
+        </ion-item>
+        <app-field-errors [control]="form.get('operationIds')" [messages]="operationIdsErrors" />
+
+        <ion-item>
+          <ion-input
+            label="Planowany wylot"
+            labelPlacement="stacked"
+            formControlName="plannedDeparture"
+            type="datetime-local"
+          />
+        </ion-item>
+        <app-field-errors
+          [control]="form.get('plannedDeparture')"
+          [messages]="plannedDepartureErrors"
+        />
+
+        <ion-item>
+          <ion-input
+            label="Planowane lądowanie"
+            labelPlacement="stacked"
+            formControlName="plannedLanding"
+            type="datetime-local"
+          />
+        </ion-item>
+        <app-field-errors
+          [control]="form.get('plannedLanding')"
+          [messages]="plannedLandingErrors"
+        />
+
+        <ion-item>
+          <ion-input
+            label="Szacowana trasa (km)"
+            labelPlacement="stacked"
+            formControlName="estimatedRouteKm"
+            type="number"
+            min="1"
+            placeholder="Wprowadź dystans w km"
+          />
+        </ion-item>
+        <app-field-errors
+          [control]="form.get('estimatedRouteKm')"
+          [messages]="estimatedRouteKmErrors"
+        />
+
+        <ion-button expand="block" type="submit" [disabled]="loading()" class="ion-margin-top">
+          @if (loading()) {
+            <ion-spinner name="crescent" />
+          } @else {
+            Dodaj zlecenie
+          }
+        </ion-button>
+      </form>
+    }
+  </ion-grid>
+</ion-content>

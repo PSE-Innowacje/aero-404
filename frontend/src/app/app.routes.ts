@@ -105,4 +105,10 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/flight-tickets/flight-tickets').then((m) => m.FlightTicketsPage),
   },
+  {
+    path: 'flight-tickets/add',
+    canActivate: [authGuard],
+    loadComponent: () =>
+      import('./pages/flight-ticket-add/flight-ticket-add').then((m) => m.FlightTicketAddPage),
+  },
 ];
