@@ -6,12 +6,10 @@ import {
   IonButton,
   IonButtons,
   IonContent,
-  IonFooter,
   IonGrid,
   IonHeader,
   IonInput,
   IonItem,
-  IonModal,
   IonProgressBar,
   IonSelect,
   IonSelectOption,
@@ -21,6 +19,7 @@ import {
   IonToolbar,
 } from '@ionic/angular/standalone';
 
+import { ConfirmDeleteModalComponent } from '../../shared/confirm-delete-modal/confirm-delete-modal';
 import { UsersApiService } from '../../services/users-api.service';
 import { UserRole } from '../../models/auth.model';
 import { ErrorMessage, FieldErrorsComponent } from '../../shared/field-errors/field-errors';
@@ -38,17 +37,16 @@ const ROLE_OPTIONS: { value: UserRole; label: string }[] = [
   selector: 'app-user-edit',
   imports: [
     ReactiveFormsModule,
+    ConfirmDeleteModalComponent,
     FieldErrorsComponent,
     IonBackButton,
     IonButton,
     IonButtons,
     IonContent,
-    IonFooter,
     IonGrid,
     IonHeader,
     IonInput,
     IonItem,
-    IonModal,
     IonProgressBar,
     IonSelect,
     IonSelectOption,

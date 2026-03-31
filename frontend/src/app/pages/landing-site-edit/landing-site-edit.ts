@@ -8,12 +8,10 @@ import {
   IonButton,
   IonButtons,
   IonContent,
-  IonFooter,
   IonGrid,
   IonHeader,
   IonInput,
   IonItem,
-  IonModal,
   IonProgressBar,
   IonSpinner,
   IonText,
@@ -22,6 +20,7 @@ import {
   ToastController,
 } from '@ionic/angular/standalone';
 
+import { ConfirmDeleteModalComponent } from '../../shared/confirm-delete-modal/confirm-delete-modal';
 import { AirfieldApiService } from '../../services/airfield-api.service';
 import { ErrorMessage, FieldErrorsComponent } from '../../shared/field-errors/field-errors';
 import { MapLandingComponent } from '../../shared/map-landing/map-landing';
@@ -31,18 +30,17 @@ import { getErrorMessage } from '../../shared/utils/error-messages';
   selector: 'app-landing-site-edit',
   imports: [
     ReactiveFormsModule,
+    ConfirmDeleteModalComponent,
     FieldErrorsComponent,
     MapLandingComponent,
     IonBackButton,
     IonButton,
     IonButtons,
     IonContent,
-    IonFooter,
     IonGrid,
     IonHeader,
     IonInput,
     IonItem,
-    IonModal,
     IonProgressBar,
     IonSpinner,
     IonText,

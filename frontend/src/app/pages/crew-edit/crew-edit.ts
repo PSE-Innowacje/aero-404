@@ -6,12 +6,10 @@ import {
   IonButton,
   IonButtons,
   IonContent,
-  IonFooter,
   IonGrid,
   IonHeader,
   IonInput,
   IonItem,
-  IonModal,
   IonProgressBar,
   IonSelect,
   IonSelectOption,
@@ -22,6 +20,7 @@ import {
   ToastController,
 } from '@ionic/angular/standalone';
 
+import { ConfirmDeleteModalComponent } from '../../shared/confirm-delete-modal/confirm-delete-modal';
 import { CrewApiService } from '../../services/crew-api.service';
 import { CrewRole } from '../../models/crew.model';
 import { ErrorMessage, FieldErrorsComponent } from '../../shared/field-errors/field-errors';
@@ -37,17 +36,16 @@ const ROLE_OPTIONS: { value: CrewRole; label: string }[] = [
   selector: 'app-crew-edit',
   imports: [
     ReactiveFormsModule,
+    ConfirmDeleteModalComponent,
     FieldErrorsComponent,
     IonBackButton,
     IonButton,
     IonButtons,
     IonContent,
-    IonFooter,
     IonGrid,
     IonHeader,
     IonInput,
     IonItem,
-    IonModal,
     IonProgressBar,
     IonSelect,
     IonSelectOption,

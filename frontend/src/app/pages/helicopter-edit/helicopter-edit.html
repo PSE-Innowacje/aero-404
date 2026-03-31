@@ -142,30 +142,13 @@
       </ion-button>
     </form>
 
-    <ion-modal [isOpen]="deleteModalOpen()" (didDismiss)="closeDeleteModal()" [cssClass]="'delete-modal'">
-      <ng-template>
-        <ion-header>
-          <ion-toolbar>
-            <ion-title>Potwierdzenie usunięcia</ion-title>
-          </ion-toolbar>
-        </ion-header>
-        <ion-content class="ion-padding delete-modal-content">
-          <p>Czy na pewno chcesz usunąć helikopter <strong>{{ form.get('regNumber')?.value }}</strong>?</p>
-        </ion-content>
-        <ion-footer>
-          <div class="delete-modal-actions">
-            <ion-button fill="outline" color="danger" (click)="closeDeleteModal()">Nie</ion-button>
-            <ion-button color="danger" [disabled]="deleting()" (click)="confirmDelete()">
-              @if (deleting()) {
-                Usuwanie...
-              } @else {
-                Tak
-              }
-            </ion-button>
-          </div>
-        </ion-footer>
-      </ng-template>
-    </ion-modal>
+    <app-confirm-delete-modal
+      [isOpen]="deleteModalOpen()"
+      [deleting]="deleting()"
+      [message]="'Czy na pewno chcesz usunąć helikopter <strong>' + form.get('regNumber')?.value + '</strong>?'"
+      (confirm)="confirmDelete()"
+      (dismiss)="closeDeleteModal()"
+    />
   }
   </ion-grid>
 </ion-content>

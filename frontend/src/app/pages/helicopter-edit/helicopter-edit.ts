@@ -6,12 +6,10 @@ import {
   IonButton,
   IonButtons,
   IonContent,
-  IonFooter,
   IonGrid,
   IonHeader,
   IonInput,
   IonItem,
-  IonModal,
   IonProgressBar,
   IonSelect,
   IonSelectOption,
@@ -22,6 +20,7 @@ import {
   ToastController,
 } from '@ionic/angular/standalone';
 
+import { ConfirmDeleteModalComponent } from '../../shared/confirm-delete-modal/confirm-delete-modal';
 import { HelicopterApiService } from '../../services/helicopter-api.service';
 import { HelicopterStatus } from '../../models/helicopter.model';
 import { ErrorMessage, FieldErrorsComponent } from '../../shared/field-errors/field-errors';
@@ -36,17 +35,16 @@ const STATUS_OPTIONS: { value: HelicopterStatus; label: string }[] = [
   selector: 'app-helicopter-edit',
   imports: [
     ReactiveFormsModule,
+    ConfirmDeleteModalComponent,
     FieldErrorsComponent,
     IonBackButton,
     IonButton,
     IonButtons,
     IonContent,
-    IonFooter,
     IonGrid,
     IonHeader,
     IonInput,
     IonItem,
-    IonModal,
     IonProgressBar,
     IonSelect,
     IonSelectOption,
