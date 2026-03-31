@@ -9,3 +9,5 @@ frontend/CLAUDE.md
 # backend
 backend/.claude
 backend/CLAUDE.md
+# Local Netlify folder
+.netlify
