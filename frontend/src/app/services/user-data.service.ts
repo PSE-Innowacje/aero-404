@@ -22,8 +22,11 @@ export class UserDataService {
 
   loadFromStorage() {
     const stored = localStorage.getItem('userData');
-    if (stored) {
+    if (!stored) return;
+    try {
       this.userData.set(JSON.parse(stored));
+    } catch {
+      localStorage.removeItem('userData');
     }
   }
 }

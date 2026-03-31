@@ -6,9 +6,10 @@ export const authGuard: CanActivateFn = () => {
   const userDataService = inject(UserDataService);
   const router = inject(Router);
 
-  if (userDataService.isLoggedIn()) {
+  if (userDataService.isLoggedIn() && userDataService.token()) {
     return true;
   }
 
+  userDataService.clearUser();
   return router.createUrlTree(['/login']);
 };

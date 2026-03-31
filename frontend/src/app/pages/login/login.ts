@@ -1,12 +1,5 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
-import {
-  FormBuilder,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-  AbstractControl,
-  ValidationErrors,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import {
   IonButton,
@@ -22,13 +15,8 @@ import {
 import { AuthApiService } from '../../services/auth-api.service';
 import { UserDataService } from '../../services/user-data.service';
 import { ErrorMessage, FieldErrorsComponent } from '../../shared/field-errors/field-errors';
-
-function emailValidator(control: AbstractControl): ValidationErrors | null {
-  const value = control.value;
-  if (!value) return null;
-  const regex = /^[a-zA-Z0-9.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z]+(\.[a-zA-Z]+)*$/;
-  return regex.test(value) ? null : { emailFormat: true };
-}
+import { emailValidator } from '../../shared/validators/email.validator';
+import { getErrorMessage } from '../../shared/utils/error-messages';
 
 @Component({
   selector: 'app-login',
@@ -95,8 +83,7 @@ export class LoginPage implements OnInit {
       },
       error: (err) => {
         this.loading.set(false);
-        const msg = err.error?.message || 'Nieprawidłowy email lub hasło.';
-        this.errorMessage.set(msg);
+        this.errorMessage.set(getErrorMessage(err, 'Nieprawidłowy email lub hasło.'));
       },
     });
   }
