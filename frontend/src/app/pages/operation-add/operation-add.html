@@ -1,0 +1,111 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/operations" text="Wróć" />
+    </ion-buttons>
+    <ion-title>Dodaj operację</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-grid [fixed]="true">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    @if (errorMessage()) {
+      <ion-text color="danger">
+        <p class="error-banner">{{ errorMessage() }}</p>
+      </ion-text>
+    }
+
+    <ion-item>
+      <ion-input
+        label="Numer zlecenia"
+        labelPlacement="stacked"
+        formControlName="orderNumber"
+        type="text"
+        maxlength="50"
+        placeholder="Opcjonalnie"
+      />
+    </ion-item>
+    <app-field-errors [control]="form.get('orderNumber')" [messages]="orderNumberErrors" />
+
+    <ion-item>
+      <ion-input
+        label="Krótki opis"
+        labelPlacement="stacked"
+        formControlName="shortDescription"
+        type="text"
+        maxlength="255"
+        placeholder="Wprowadź opis operacji"
+      />
+    </ion-item>
+    <app-field-errors [control]="form.get('shortDescription')" [messages]="shortDescriptionErrors" />
+
+    <ion-item>
+      <ion-input
+        label="Proponowana data od"
+        labelPlacement="stacked"
+        formControlName="proposedDateFrom"
+        type="date"
+      />
+    </ion-item>
+
+    <ion-item>
+      <ion-input
+        label="Proponowana data do"
+        labelPlacement="stacked"
+        formControlName="proposedDateTo"
+        type="date"
+      />
+    </ion-item>
+    <app-field-errors [control]="form.get('proposedDateTo')" [messages]="proposedDateToErrors" />
+
+    <ion-item>
+      <ion-select
+        label="Typy aktywności"
+        labelPlacement="stacked"
+        formControlName="activityTypes"
+        placeholder="Wybierz typy"
+        [multiple]="true"
+      >
+        @for (opt of activityOptions; track opt.value) {
+          <ion-select-option [value]="opt.value">{{ opt.label }}</ion-select-option>
+        }
+      </ion-select>
+    </ion-item>
+    <app-field-errors [control]="form.get('activityTypes')" [messages]="activityTypesErrors" />
+
+    <ion-item>
+      <ion-textarea
+        label="Dodatkowe informacje"
+        labelPlacement="stacked"
+        formControlName="additionalInfo"
+        placeholder="Opcjonalnie"
+        [autoGrow]="true"
+      />
+    </ion-item>
+
+    <ion-item>
+      <ion-input
+        label="Adresy e-mail kontaktowe"
+        labelPlacement="stacked"
+        formControlName="contactEmails"
+        type="text"
+        placeholder="Opcjonalnie"
+      />
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Plik KML</ion-label>
+      <input type="file" accept=".kml" (change)="onFileChange($event)" />
+    </ion-item>
+
+    <ion-button expand="block" type="submit" [disabled]="loading()" class="ion-margin-top">
+      @if (loading()) {
+        <ion-spinner name="crescent" />
+      } @else {
+        Dodaj operację
+      }
+    </ion-button>
+  </form>
+  </ion-grid>
+</ion-content>

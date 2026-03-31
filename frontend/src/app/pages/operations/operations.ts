@@ -1,8 +1,10 @@
 import { DatePipe } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { ViewWillEnter } from '@ionic/angular';
 import {
   IonBadge,
+  IonButton,
   IonButtons,
   IonContent,
   IonGrid,
@@ -48,7 +50,9 @@ const STATUS_COLORS: Record<OperationStatus, string> = {
   selector: 'app-operations',
   imports: [
     DatePipe,
+    RouterLink,
     IonBadge,
+    IonButton,
     IonButtons,
     IonContent,
     IonGrid,

@@ -76,6 +76,12 @@ export const routes: Routes = [
       import('./pages/operations/operations').then((m) => m.OperationsPage),
   },
   {
+    path: 'operations/add',
+    canActivate: [authGuard],
+    loadComponent: () =>
+      import('./pages/operation-add/operation-add').then((m) => m.OperationAddPage),
+  },
+  {
     path: 'flight-tickets',
     canActivate: [authGuard],
     loadComponent: () =>
