@@ -1,6 +1,8 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import {
   IonBadge,
+  IonButton,
   IonButtons,
   IonContent,
   IonHeader,
@@ -26,7 +28,9 @@ const ROLE_LABELS: Record<string, string> = {
 @Component({
   selector: 'app-crew',
   imports: [
+    RouterLink,
     IonBadge,
+    IonButton,
     IonButtons,
     IonContent,
     IonHeader,

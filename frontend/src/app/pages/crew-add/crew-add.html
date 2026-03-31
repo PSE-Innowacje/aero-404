@@ -1,0 +1,120 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/admin/crew" text="Wróć" />
+    </ion-buttons>
+    <ion-title>Dodaj członka załogi</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    @if (errorMessage()) {
+      <ion-text color="danger">
+        <p class="error-banner">{{ errorMessage() }}</p>
+      </ion-text>
+    }
+
+    <ion-item>
+      <ion-input
+        label="Imię"
+        labelPlacement="stacked"
+        formControlName="firstName"
+        type="text"
+        maxlength="100"
+        placeholder="Wprowadź imię"
+      />
+    </ion-item>
+    <app-field-errors [control]="form.get('firstName')" [messages]="firstNameErrors" />
+
+    <ion-item>
+      <ion-input
+        label="Nazwisko"
+        labelPlacement="stacked"
+        formControlName="lastName"
+        type="text"
+        maxlength="100"
+        placeholder="Wprowadź nazwisko"
+      />
+    </ion-item>
+    <app-field-errors [control]="form.get('lastName')" [messages]="lastNameErrors" />
+
+    <ion-item>
+      <ion-input
+        label="Email"
+        labelPlacement="stacked"
+        formControlName="email"
+        type="email"
+        maxlength="100"
+        placeholder="Wprowadź email"
+      />
+    </ion-item>
+    <app-field-errors [control]="form.get('email')" [messages]="emailErrors" />
+
+    <ion-item>
+      <ion-input
+        label="Waga (kg)"
+        labelPlacement="stacked"
+        formControlName="weight"
+        type="number"
+        min="30"
+        max="200"
+        placeholder="30–200"
+      />
+    </ion-item>
+    <app-field-errors [control]="form.get('weight')" [messages]="weightErrors" />
+
+    <ion-item>
+      <ion-select
+        label="Rola"
+        labelPlacement="stacked"
+        formControlName="role"
+        placeholder="Wybierz rolę"
+      >
+        @for (opt of roleOptions; track opt.value) {
+          <ion-select-option [value]="opt.value">{{ opt.label }}</ion-select-option>
+        }
+      </ion-select>
+    </ion-item>
+    <app-field-errors [control]="form.get('role')" [messages]="roleErrors" />
+
+    <ion-item>
+      <ion-input
+        label="Numer licencji"
+        labelPlacement="stacked"
+        formControlName="licenseNumber"
+        type="text"
+        maxlength="30"
+        placeholder="Opcjonalnie"
+      />
+    </ion-item>
+    <app-field-errors [control]="form.get('licenseNumber')" [messages]="licenseNumberErrors" />
+
+    <ion-item>
+      <ion-input
+        label="Data ważności licencji"
+        labelPlacement="stacked"
+        formControlName="licenseExpiry"
+        type="date"
+      />
+    </ion-item>
+
+    <ion-item>
+      <ion-input
+        label="Data ważności szkolenia"
+        labelPlacement="stacked"
+        formControlName="trainingExpiry"
+        type="date"
+      />
+    </ion-item>
+    <app-field-errors [control]="form.get('trainingExpiry')" [messages]="trainingExpiryErrors" />
+
+    <ion-button expand="block" type="submit" [disabled]="loading()" class="ion-margin-top">
+      @if (loading()) {
+        <ion-spinner name="crescent" />
+      } @else {
+        Dodaj członka załogi
+      }
+    </ion-button>
+  </form>
+</ion-content>
