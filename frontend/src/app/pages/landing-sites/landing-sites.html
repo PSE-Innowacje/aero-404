@@ -25,7 +25,7 @@
         <ion-item button [routerLink]="'/admin/landing-sites/edit/' + airfield.id">
           <ion-label>
             <h2>{{ airfield.name }}</h2>
-            <p>{{ airfield.latitude }}°N, {{ airfield.longitude }}°E</p>
+            <p>{{ airfield.latitude >= 0 ? airfield.latitude + '°N' : -airfield.latitude + '°S' }}, {{ airfield.longitude >= 0 ? airfield.longitude + '°E' : -airfield.longitude + '°W' }}</p>
           </ion-label>
         </ion-item>
       }
