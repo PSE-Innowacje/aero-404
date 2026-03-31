@@ -84,7 +84,20 @@ export class MapLandingComponent implements AfterViewInit {
         longitude: Math.round(lon * 1e6) / 1e6,
       });
     });
+    translate.on('translatestart', () => {
+      this.mapElement().nativeElement.style.cursor = 'grabbing';
+    });
+    translate.on('translateend', () => {
+      this.mapElement().nativeElement.style.cursor = 'grab';
+    });
     this.map.addInteraction(translate);
+
+    this.map.on('pointermove', (e) => {
+      if (e.dragging) return;
+      const hit = this.map!.hasFeatureAtPixel(e.pixel, { layerFilter: (l) => l === this.markerLayer });
+      const el = this.mapElement().nativeElement;
+      el.style.cursor = hit ? 'grab' : '';
+    });
 
     this.updateMarker(this.latitude(), this.longitude());
   }
