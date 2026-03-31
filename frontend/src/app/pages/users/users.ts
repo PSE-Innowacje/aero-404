@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import {
   IonBadge,
   IonButton,
@@ -18,6 +18,7 @@ import {
   IonToolbar,
 } from '@ionic/angular/standalone';
 
+import { UserDataService } from '../../services/user-data.service';
 import { UsersApiService } from '../../services/users-api.service';
 import { UserResponseDto } from '../../models/user.model';
 import { UserRole } from '../../models/auth.model';
@@ -62,6 +63,9 @@ const ROLE_OPTIONS: { value: UserRole; label: string }[] = [
 })
 export class UsersPage implements OnInit {
   private usersApi = inject(UsersApiService);
+  private userDataService = inject(UserDataService);
+
+  isAdmin = computed(() => this.userDataService.role() === 'ADMIN');
 
   users = signal<UserResponseDto[]>([]);
   loading = signal(true);

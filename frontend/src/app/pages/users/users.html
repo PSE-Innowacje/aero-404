@@ -25,12 +25,14 @@
             <p>{{ user.firstName }} {{ user.lastName }}</p>
           </ion-label>
           <ion-badge slot="end" class="ion-margin-end">{{ roleLabel(user.role) }}</ion-badge>
-          <ion-button slot="end" fill="outline" (click)="openRoleModal(user)">
-            Zmień rolę
-          </ion-button>
-          <ion-button slot="end" fill="outline" color="danger" (click)="openDeleteModal(user)">
-            Usuń
-          </ion-button>
+          @if (isAdmin()) {
+            <ion-button slot="end" fill="outline" (click)="openRoleModal(user)">
+              Zmień rolę
+            </ion-button>
+            <ion-button slot="end" fill="outline" color="danger" (click)="openDeleteModal(user)">
+              Usuń
+            </ion-button>
+          }
         </ion-item>
       }
     </ion-list>
