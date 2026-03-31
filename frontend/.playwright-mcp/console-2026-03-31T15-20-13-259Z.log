@@ -1,0 +1,4 @@
+[     142ms] [LOG] Angular is running in development mode. @ http://localhost:3000/@fs/C:/Users/lukas/Documents/dev/hacaton/aero-404/frontend/.angular/cache/21.2.5/frontend/vite/deps/chunk-VGFSVC2Q.js?v=8297214e:17285
+[   13317ms] [ERROR] Failed to load resource: the server responded with a status of 400 () @ https://aero-404.onrender.com/api/v1/auth/register:0
+[   33493ms] [LOG] Angular is running in development mode. @ http://localhost:3000/@fs/C:/Users/lukas/Documents/dev/hacaton/aero-404/frontend/.angular/cache/21.2.5/frontend/vite/deps/chunk-VGFSVC2Q.js?v=8297214e:17285
+[   42995ms] [LOG] Angular is running in development mode. @ http://localhost:3000/@fs/C:/Users/lukas/Documents/dev/hacaton/aero-404/frontend/.angular/cache/21.2.5/frontend/vite/deps/chunk-VGFSVC2Q.js?v=8297214e:17285

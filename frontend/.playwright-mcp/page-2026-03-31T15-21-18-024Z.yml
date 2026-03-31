@@ -1,0 +1,33 @@
+- generic [ref=e5]:
+  - banner [ref=e6]:
+    - generic [ref=e11]:
+      - generic: Rejestracja
+  - main [ref=e12]:
+    - generic [ref=e16]:
+      - generic [ref=e22]:
+        - generic:
+          - generic: Imię
+        - textbox "Imię" [ref=e24]:
+          - /placeholder: Wprowadź imię
+      - generic [ref=e30]:
+        - generic:
+          - generic: Nazwisko
+        - textbox "Nazwisko" [ref=e32]:
+          - /placeholder: Wprowadź nazwisko
+      - generic [ref=e38]:
+        - generic:
+          - generic: Email
+        - textbox "Email" [ref=e40]:
+          - /placeholder: Wprowadź email
+      - generic [ref=e46]:
+        - generic:
+          - generic: Hasło
+        - textbox "Hasło" [ref=e48]:
+          - /placeholder: Minimum 5 znaków
+      - button "Zarejestruj się" [ref=e50] [cursor=pointer]:
+        - generic [ref=e51]:
+          - generic: Zarejestruj się
+      - link "Masz już konto? Zaloguj się" [ref=e53] [cursor=pointer]:
+        - /url: /login
+        - generic [ref=e54]:
+          - generic: Masz już konto? Zaloguj się

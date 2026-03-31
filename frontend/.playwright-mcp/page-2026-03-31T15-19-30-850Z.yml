@@ -1,0 +1,103 @@
+- generic [ref=e3]:
+  - generic:
+    - navigation "menu" [ref=e4]:
+      - generic [ref=e5]:
+        - generic:
+          - generic [ref=e10]:
+            - generic: AERO
+          - generic [ref=e13]:
+            - generic:
+              - list [ref=e14]:
+                - generic [ref=e16]:
+                  - generic: Administracja
+                - listitem [ref=e17]:
+                  - link "Helikoptery" [ref=e18] [cursor=pointer]:
+                    - /url: /admin/helicopters
+                    - img [ref=e19]:
+                      - img [ref=e21]
+                    - generic [ref=e29]: Helikoptery
+                - listitem [ref=e30]:
+                  - link "Członkowie załogi" [ref=e31] [cursor=pointer]:
+                    - /url: /admin/crew
+                    - img [ref=e32]:
+                      - img [ref=e34]
+                    - generic [ref=e41]: Członkowie załogi
+                - listitem [ref=e42]:
+                  - link "Lądowiska planowe" [ref=e43] [cursor=pointer]:
+                    - /url: /admin/landing-sites
+                    - img [ref=e44]:
+                      - img [ref=e46]
+                    - generic [ref=e51]: Lądowiska planowe
+                - listitem [ref=e52]:
+                  - link "Użytkownicy" [ref=e53] [cursor=pointer]:
+                    - /url: /admin/users
+                    - img [ref=e54]:
+                      - img [ref=e56]
+                    - generic [ref=e61]: Użytkownicy
+              - list [ref=e62]:
+                - generic [ref=e64]:
+                  - generic: Planowanie operacji
+                - listitem [ref=e65]:
+                  - link "Lista operacji" [ref=e66] [cursor=pointer]:
+                    - /url: /operations
+                    - img [ref=e67]:
+                      - img [ref=e69]
+                    - generic [ref=e74]: Lista operacji
+              - list [ref=e75]:
+                - generic [ref=e77]:
+                  - generic: Zlecenia na lot
+                - listitem [ref=e78]:
+                  - link "Lista zleceń" [ref=e79] [cursor=pointer]:
+                    - /url: /flight-tickets
+                    - img [ref=e80]:
+                      - img [ref=e82]
+                    - generic [ref=e89]: Lista zleceń
+              - list [ref=e90]:
+                - generic [ref=e92]:
+                  - generic: Użytkownik
+                - listitem [ref=e93]:
+                  - button "Wyloguj" [ref=e94] [cursor=pointer]:
+                    - img [ref=e95]:
+                      - img [ref=e97]
+                    - generic [ref=e101]: Wyloguj
+    - generic [ref=e143]:
+      - banner [ref=e144]:
+        - generic [ref=e149]:
+          - generic: Rejestracja
+      - main [ref=e150]:
+        - generic [ref=e154]:
+          - generic [ref=e160]:
+            - generic:
+              - generic: Imię
+            - textbox "Imię" [ref=e162]:
+              - /placeholder: Wprowadź imię
+          - generic [ref=e194]:
+            - generic: Imię jest wymagane.
+          - generic [ref=e168]:
+            - generic:
+              - generic: Nazwisko
+            - textbox "Nazwisko" [ref=e170]:
+              - /placeholder: Wprowadź nazwisko
+          - generic [ref=e196]:
+            - generic: Nazwisko jest wymagane.
+          - generic [ref=e176]:
+            - generic:
+              - generic: Email
+            - textbox "Email" [ref=e178]:
+              - /placeholder: Wprowadź email
+          - generic [ref=e198]:
+            - generic: Email jest wymagany.
+          - generic [ref=e184]:
+            - generic:
+              - generic: Hasło
+            - textbox "Hasło" [ref=e186]:
+              - /placeholder: Minimum 5 znaków
+          - generic [ref=e200]:
+            - generic: Hasło jest wymagane.
+          - button "Zarejestruj się" [ref=e188] [cursor=pointer]:
+            - generic [ref=e189]:
+              - generic: Zarejestruj się
+          - link "Masz już konto? Zaloguj się" [ref=e191] [cursor=pointer]:
+            - /url: /login
+            - generic [ref=e192]:
+              - generic: Masz już konto? Zaloguj się

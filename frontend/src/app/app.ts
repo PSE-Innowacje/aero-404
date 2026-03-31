@@ -66,6 +66,8 @@ export class App implements OnInit {
   private userDataService = inject(UserDataService);
   private router = inject(Router);
 
+  isLoggedIn = this.userDataService.isLoggedIn;
+
   ngOnInit() {
     this.userDataService.loadFromStorage();
   }
