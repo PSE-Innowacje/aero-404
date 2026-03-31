@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -49,11 +49,17 @@ function emailValidator(control: AbstractControl): ValidationErrors | null {
   templateUrl: './login.html',
   styleUrl: './login.scss',
 })
-export class LoginPage {
+export class LoginPage implements OnInit {
   private fb = inject(FormBuilder);
   private authApi = inject(AuthApiService);
   private userDataService = inject(UserDataService);
   private router = inject(Router);
+
+  ngOnInit() {
+    if (this.userDataService.isLoggedIn()) {
+      this.router.navigate(['/operations']);
+    }
+  }
 
   loading = signal(false);
   errorMessage = signal('');
