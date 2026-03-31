@@ -19,7 +19,7 @@ import {
   IonText,
   IonSpinner,
 } from '@ionic/angular/standalone';
-import { UserService } from '../../services/user.service';
+import { AuthApiService } from '../../services/auth-api.service';
 import { ErrorMessage, FieldErrorsComponent } from '../../shared/field-errors/field-errors';
 
 function emailValidator(control: AbstractControl): ValidationErrors | null {
@@ -51,7 +51,7 @@ function emailValidator(control: AbstractControl): ValidationErrors | null {
 })
 export class RegisterPage {
   private fb = inject(FormBuilder);
-  private userService = inject(UserService);
+  private authApi = inject(AuthApiService);
   private router = inject(Router);
 
   loading = signal(false);
@@ -94,7 +94,7 @@ export class RegisterPage {
     this.loading.set(true);
     this.errorMessage.set('');
 
-    this.userService.register(this.form.getRawValue()).subscribe({
+    this.authApi.register(this.form.getRawValue()).subscribe({
       next: () => {
         this.loading.set(false);
         this.router.navigate(['/login']);
