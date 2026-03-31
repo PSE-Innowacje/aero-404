@@ -14,13 +14,13 @@ import {
   IonHeader,
   IonInput,
   IonItem,
-  IonNote,
   IonTitle,
   IonToolbar,
   IonText,
   IonSpinner,
 } from '@ionic/angular/standalone';
 import { UserService } from '../../services/user.service';
+import { ErrorMessage, FieldErrorsComponent } from '../../shared/field-errors/field-errors';
 
 function emailValidator(control: AbstractControl): ValidationErrors | null {
   const value = control.value;
@@ -34,12 +34,12 @@ function emailValidator(control: AbstractControl): ValidationErrors | null {
   selector: 'app-register',
   imports: [
     ReactiveFormsModule,
+    FieldErrorsComponent,
     IonButton,
     IonContent,
     IonHeader,
     IonInput,
     IonItem,
-    IonNote,
     IonTitle,
     IonToolbar,
     IonText,
@@ -55,6 +55,27 @@ export class RegisterPage {
 
   loading = signal(false);
   errorMessage = signal('');
+
+  firstNameErrors: ErrorMessage[] = [
+    { key: 'required', message: 'Imię jest wymagane.' },
+    { key: 'maxlength', message: 'Imię może mieć maksymalnie 100 znaków.' },
+  ];
+
+  lastNameErrors: ErrorMessage[] = [
+    { key: 'required', message: 'Nazwisko jest wymagane.' },
+    { key: 'maxlength', message: 'Nazwisko może mieć maksymalnie 100 znaków.' },
+  ];
+
+  emailErrors: ErrorMessage[] = [
+    { key: 'required', message: 'Email jest wymagany.' },
+    { key: 'maxlength', message: 'Email może mieć maksymalnie 100 znaków.' },
+    { key: 'emailFormat', message: 'Nieprawidłowy format email.' },
+  ];
+
+  passwordErrors: ErrorMessage[] = [
+    { key: 'required', message: 'Hasło jest wymagane.' },
+    { key: 'minlength', message: 'Hasło musi mieć minimum 5 znaków.' },
+  ];
 
   form: FormGroup = this.fb.group({
     firstName: ['', [Validators.required, Validators.maxLength(100)]],
