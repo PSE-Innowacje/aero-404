@@ -10,6 +10,7 @@ import {
   IonHeader,
   IonInput,
   IonItem,
+  IonModal,
   IonProgressBar,
   IonSelect,
   IonSelectOption,
@@ -45,6 +46,7 @@ const ROLE_OPTIONS: { value: UserRole; label: string }[] = [
     IonHeader,
     IonInput,
     IonItem,
+    IonModal,
     IonProgressBar,
     IonSelect,
     IonSelectOption,
@@ -66,6 +68,8 @@ export class UserEditPage {
   loadFailed = signal(false);
   saving = signal(false);
   errorMessage = signal('');
+  deleteModalOpen = signal(false);
+  deleting = signal(false);
 
   readonly roleOptions = ROLE_OPTIONS;
 
@@ -127,6 +131,30 @@ export class UserEditPage {
       error: (err) => {
         this.saving.set(false);
         this.errorMessage.set(getErrorMessage(err, 'Nie udało się zaktualizować użytkownika.'));
+      },
+    });
+  }
+
+  openDeleteModal(): void {
+    this.deleteModalOpen.set(true);
+  }
+
+  closeDeleteModal(): void {
+    this.deleteModalOpen.set(false);
+  }
+
+  confirmDelete(): void {
+    this.deleting.set(true);
+    this.usersApi.delete(this.userId).subscribe({
+      next: () => {
+        this.deleting.set(false);
+        this.closeDeleteModal();
+        this.router.navigate(['/admin/users']);
+      },
+      error: (err) => {
+        this.errorMessage.set(getErrorMessage(err, 'Nie udało się usunąć użytkownika.'));
+        this.deleting.set(false);
+        this.closeDeleteModal();
       },
     });
   }

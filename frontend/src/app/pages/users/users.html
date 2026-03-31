@@ -31,39 +31,10 @@
             <p>{{ user.firstName }} {{ user.lastName }}</p>
           </ion-label>
           <ion-badge slot="end" color="medium" class="ion-margin-end">{{ roleLabel(user.role) }}</ion-badge>
-          @if (isAdmin()) {
-            <ion-button slot="end" fill="outline" color="danger" (click)="openDeleteModal(user); $event.stopPropagation()">
-              Usuń
-            </ion-button>
-          }
         </ion-item>
       }
     </ion-list>
   }
 
-  <ion-modal [isOpen]="deleteModalOpen()" (didDismiss)="closeDeleteModal()" [cssClass]="'delete-modal'">
-    <ng-template>
-      <ion-header>
-        <ion-toolbar>
-          <ion-title>Potwierdzenie usunięcia</ion-title>
-        </ion-toolbar>
-      </ion-header>
-      <ion-content class="ion-padding">
-        @if (userToDelete(); as user) {
-          <p>Czy na pewno chcesz usunąć użytkownika <strong>{{ user.firstName }} {{ user.lastName }}</strong> ({{ user.email }})?</p>
-        }
-        <div class="delete-modal-actions">
-          <ion-button fill="clear" color="primary" (click)="closeDeleteModal()">Nie</ion-button>
-          <ion-button color="danger" [disabled]="deleting()" (click)="confirmDelete()">
-            @if (deleting()) {
-              Usuwanie...
-            } @else {
-              Tak
-            }
-          </ion-button>
-        </div>
-      </ion-content>
-    </ng-template>
-  </ion-modal>
   </ion-grid>
 </ion-content>

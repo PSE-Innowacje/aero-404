@@ -10,7 +10,6 @@ import {
   IonLabel,
   IonList,
   IonMenuButton,
-  IonModal,
   IonNote,
   IonProgressBar,
   IonTitle,
@@ -43,7 +42,6 @@ const ROLE_LABELS: Record<string, string> = {
     IonLabel,
     IonList,
     IonMenuButton,
-    IonModal,
     IonNote,
     IonProgressBar,
     IonTitle,
@@ -63,45 +61,12 @@ export class UsersPage  {
   loading = signal(true);
   errorMessage = signal('');
 
-  deleteModalOpen = signal(false);
-  userToDelete = signal<UserResponseDto | null>(null);
-  deleting = signal(false);
-
   ionViewWillEnter(): void {
     this.loadUsers();
   }
 
   roleLabel(role: string): string {
     return ROLE_LABELS[role] ?? role;
-  }
-
-  openDeleteModal(user: UserResponseDto): void {
-    this.userToDelete.set(user);
-    this.deleteModalOpen.set(true);
-  }
-
-  closeDeleteModal(): void {
-    this.deleteModalOpen.set(false);
-    this.userToDelete.set(null);
-  }
-
-  confirmDelete(): void {
-    const user = this.userToDelete();
-    if (!user) return;
-
-    this.deleting.set(true);
-    this.usersApi.delete(user.id).subscribe({
-      next: () => {
-        this.users.update((list) => list.filter((u) => u.id !== user.id));
-        this.deleting.set(false);
-        this.closeDeleteModal();
-      },
-      error: (err) => {
-        this.errorMessage.set(getErrorMessage(err, 'Nie udało się usunąć użytkownika.'));
-        this.deleting.set(false);
-        this.closeDeleteModal();
-      },
-    });
   }
 
   private loadUsers(): void {
