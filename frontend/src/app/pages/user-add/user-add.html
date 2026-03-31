@@ -1,0 +1,90 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/admin/users" text="Wróć" />
+    </ion-buttons>
+    <ion-title>Dodaj użytkownika</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-grid [fixed]="true">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    @if (errorMessage()) {
+      <ion-text color="danger">
+        <p class="error-banner">{{ errorMessage() }}</p>
+      </ion-text>
+    }
+
+    <ion-item>
+      <ion-input
+        label="Imię"
+        labelPlacement="stacked"
+        formControlName="firstName"
+        type="text"
+        maxlength="100"
+        placeholder="Wprowadź imię"
+      />
+    </ion-item>
+    <app-field-errors [control]="form.get('firstName')" [messages]="firstNameErrors" />
+
+    <ion-item>
+      <ion-input
+        label="Nazwisko"
+        labelPlacement="stacked"
+        formControlName="lastName"
+        type="text"
+        maxlength="100"
+        placeholder="Wprowadź nazwisko"
+      />
+    </ion-item>
+    <app-field-errors [control]="form.get('lastName')" [messages]="lastNameErrors" />
+
+    <ion-item>
+      <ion-input
+        label="Email"
+        labelPlacement="stacked"
+        formControlName="email"
+        type="email"
+        maxlength="100"
+        placeholder="Wprowadź email"
+      />
+    </ion-item>
+    <app-field-errors [control]="form.get('email')" [messages]="emailErrors" />
+
+    <ion-item>
+      <ion-input
+        label="Hasło"
+        labelPlacement="stacked"
+        formControlName="password"
+        type="password"
+        maxlength="100"
+        placeholder="Minimum 8 znaków"
+      />
+    </ion-item>
+    <app-field-errors [control]="form.get('password')" [messages]="passwordErrors" />
+
+    <ion-item>
+      <ion-select
+        label="Rola"
+        labelPlacement="stacked"
+        formControlName="role"
+        placeholder="Wybierz rolę"
+      >
+        @for (opt of roleOptions; track opt.value) {
+          <ion-select-option [value]="opt.value">{{ opt.label }}</ion-select-option>
+        }
+      </ion-select>
+    </ion-item>
+    <app-field-errors [control]="form.get('role')" [messages]="roleErrors" />
+
+    <ion-button expand="block" type="submit" [disabled]="loading()" class="ion-margin-top">
+      @if (loading()) {
+        <ion-spinner name="crescent" />
+      } @else {
+        Dodaj użytkownika
+      }
+    </ion-button>
+  </form>
+  </ion-grid>
+</ion-content>

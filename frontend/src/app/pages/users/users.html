@@ -2,6 +2,11 @@
   <ion-toolbar color="primary">
     <ion-buttons slot="start"><ion-menu-button /></ion-buttons>
     <ion-title>Użytkownicy</ion-title>
+    @if (isAdmin()) {
+      <ion-button slot="end" routerLink="/admin/users/add" fill="solid" color="light" size="small">
+        Dodaj
+      </ion-button>
+    }
   </ion-toolbar>
   @if (loading()) {
     <ion-progress-bar type="indeterminate" />
@@ -20,7 +25,7 @@
   @if (users().length > 0) {
     <ion-list>
       @for (user of users(); track user.id) {
-        <ion-item>
+        <ion-item button [routerLink]="'/admin/users/edit/' + user.id">
           <ion-label>
             <h2>{{ user.email }}</h2>
             <p>{{ user.firstName }} {{ user.lastName }}</p>

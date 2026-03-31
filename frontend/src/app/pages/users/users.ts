@@ -1,4 +1,4 @@
-import { Component, computed, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, inject,  signal } from '@angular/core';
 import {
   IonBadge,
   IonButton,
@@ -19,6 +19,7 @@ import {
   IonToolbar,
 } from '@ionic/angular/standalone';
 
+import { RouterLink } from '@angular/router';
 import { UserDataService } from '../../services/user-data.service';
 import { UsersApiService } from '../../services/users-api.service';
 import { UserResponseDto } from '../../models/user.model';
@@ -59,11 +60,12 @@ const ROLE_OPTIONS: { value: UserRole; label: string }[] = [
     IonRadioGroup,
     IonTitle,
     IonToolbar,
+    RouterLink,
   ],
   templateUrl: './users.html',
   styleUrl: './users.scss',
 })
-export class UsersPage implements OnInit {
+export class UsersPage  {
   private usersApi = inject(UsersApiService);
   private userDataService = inject(UserDataService);
 
@@ -84,7 +86,7 @@ export class UsersPage implements OnInit {
 
   readonly roleOptions = ROLE_OPTIONS;
 
-  ngOnInit(): void {
+  ionViewWillEnter(): void {
     this.loadUsers();
   }
 
