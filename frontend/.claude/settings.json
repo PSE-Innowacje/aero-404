@@ -2,5 +2,8 @@
   "sandbox": {
     "enabled": true,
     "autoAllowBashIfSandboxed": true
+  },
+  "enabledPlugins": {
+    "context7@claude-plugins-official": true
   }
 }
