@@ -283,19 +283,56 @@ export class FlightTicketEditPage implements OnInit {
     );
   }
 
+  private readonly completionLabels: Record<string, string> = {
+    DONE: 'Zrealizowane w całości',
+    PARTIALLY_DONE: 'Zrealizowane w części',
+    NOT_DONE: 'Nie zrealizowane',
+  };
+
   async onComplete(): Promise<void> {
-    const alert = await this.alertCtrl.create({
+    let selectedType: string | undefined;
+    const typeAlert = await this.alertCtrl.create({
       header: 'Zakończ zlecenie',
-      message: 'Podaj wynik realizacji zlecenia.',
-      inputs: [{ name: 'result', type: 'textarea', placeholder: 'Wynik realizacji' }],
+      message: 'Wybierz wynik realizacji zlecenia.',
+      inputs: [
+        { type: 'radio', label: 'Zrealizowane w całości', value: 'DONE' },
+        { type: 'radio', label: 'Zrealizowane w części', value: 'PARTIALLY_DONE' },
+        { type: 'radio', label: 'Nie zrealizowane', value: 'NOT_DONE' },
+      ],
+      buttons: [
+        { text: 'Anuluj', role: 'cancel' },
+        {
+          text: 'Dalej',
+          handler: (value: string) => {
+            if (!value) return false;
+            selectedType = value;
+            return true;
+          },
+        },
+      ],
+    });
+    await typeAlert.present();
+    const { role } = await typeAlert.onDidDismiss();
+    if (role === 'cancel' || !selectedType) return;
+    await this.showResultAlert(selectedType);
+  }
+
+  private async showResultAlert(completionType: string): Promise<void> {
+    const resultAlert = await this.alertCtrl.create({
+      header: this.completionLabels[completionType],
+      inputs: [
+        { name: 'description', type: 'text', placeholder: 'Dodatkowy opis (opcjonalny)' },
+      ],
       buttons: [
         { text: 'Anuluj', role: 'cancel' },
         {
           text: 'Zakończ',
           handler: (data) => {
-            if (!data.result?.trim()) return false;
+            const label = this.completionLabels[completionType];
+            const desc = data.description?.trim();
+            const result = desc ? `${label}. Opis: ${desc}` : `${label}`;
             this.changeStatus(
-              () => this.flightOrderApi.complete(this.orderId, { result: data.result.trim() }),
+              () => this.flightOrderApi.complete(this.orderId, { result }),
               'Zlecenie zakończone',
             );
             return true;
@@ -303,7 +340,7 @@ export class FlightTicketEditPage implements OnInit {
         },
       ],
     });
-    await alert.present();
+    await resultAlert.present();
   }
 
   openDeleteModal(): void {
