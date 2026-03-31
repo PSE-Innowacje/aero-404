@@ -20,6 +20,7 @@ import {
   IonSpinner,
 } from '@ionic/angular/standalone';
 import { AuthApiService } from '../../services/auth-api.service';
+import { UserDataService } from '../../services/user-data.service';
 import { ErrorMessage, FieldErrorsComponent } from '../../shared/field-errors/field-errors';
 
 function emailValidator(control: AbstractControl): ValidationErrors | null {
@@ -51,6 +52,7 @@ function emailValidator(control: AbstractControl): ValidationErrors | null {
 export class LoginPage {
   private fb = inject(FormBuilder);
   private authApi = inject(AuthApiService);
+  private userDataService = inject(UserDataService);
   private router = inject(Router);
 
   loading = signal(false);
@@ -82,7 +84,7 @@ export class LoginPage {
     this.authApi.login(this.form.getRawValue()).subscribe({
       next: (res) => {
         this.loading.set(false);
-        localStorage.setItem('token', res.token);
+        this.userDataService.setUser(res);
         this.router.navigate(['/operations']);
       },
       error: (err) => {

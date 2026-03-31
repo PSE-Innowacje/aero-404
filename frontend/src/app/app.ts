@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import {
   IonApp,
@@ -17,6 +17,7 @@ import {
   IonToolbar,
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
+import { UserDataService } from './services/user-data.service';
 import {
   libraryOutline,
   clipboardOutline,
@@ -58,4 +59,10 @@ addIcons({
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
-export class App {}
+export class App implements OnInit {
+  private userDataService = inject(UserDataService);
+
+  ngOnInit() {
+    this.userDataService.loadFromStorage();
+  }
+}
