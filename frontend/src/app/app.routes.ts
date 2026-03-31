@@ -111,4 +111,12 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/flight-ticket-add/flight-ticket-add').then((m) => m.FlightTicketAddPage),
   },
+  {
+    path: 'flight-tickets/edit/:id',
+    canActivate: [authGuard],
+    loadComponent: () =>
+      import('./pages/flight-ticket-edit/flight-ticket-edit').then(
+        (m) => m.FlightTicketEditPage,
+      ),
+  },
 ];

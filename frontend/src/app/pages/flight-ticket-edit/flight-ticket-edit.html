@@ -1,0 +1,273 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/flight-tickets" text="Wróć" />
+    </ion-buttons>
+    <ion-title>Edytuj zlecenie na lot</ion-title>
+  </ion-toolbar>
+  @if (loadingData()) {
+    <ion-progress-bar type="indeterminate" />
+  }
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-grid [fixed]="true">
+    @if (loadError()) {
+      <ion-text color="danger">
+        <p class="error-banner">{{ errorMessage() }}</p>
+      </ion-text>
+      <ion-button expand="block" (click)="reload()">Odśwież</ion-button>
+    } @else if (!loadingData()) {
+      @if (order(); as o) {
+        <ion-item lines="none">
+          <ion-label>
+            <p><strong>Nr zlecenia:</strong> {{ o.autoNumber }}</p>
+            <p><strong>Waga załogi:</strong> {{ o.crewWeight }} kg</p>
+            <p><strong>Trasa:</strong> {{ o.estimatedRouteKm }} km</p>
+            @if (o.actualDeparture) {
+              <p>
+                <strong>Rzeczywisty wylot:</strong>
+                {{ o.actualDeparture | date: 'dd.MM.yyyy HH:mm' }}
+              </p>
+            }
+            @if (o.actualLanding) {
+              <p>
+                <strong>Rzeczywiste lądowanie:</strong>
+                {{ o.actualLanding | date: 'dd.MM.yyyy HH:mm' }}
+              </p>
+            }
+          </ion-label>
+          <ion-badge slot="end" [color]="statusColor(o.status)">
+            {{ statusLabel(o.status) }}
+          </ion-badge>
+        </ion-item>
+
+        <div class="status-actions ion-margin-top ion-margin-bottom">
+          @if (canSubmit()) {
+            <ion-button
+              color="tertiary"
+              fill="outline"
+              [disabled]="changingStatus()"
+              (click)="onStatusSubmit()"
+            >
+              @if (changingStatus()) {
+                <ion-spinner name="crescent" />
+              } @else {
+                Złóż do akceptacji
+              }
+            </ion-button>
+          }
+          @if (canAccept()) {
+            <ion-button
+              color="success"
+              fill="outline"
+              [disabled]="changingStatus()"
+              (click)="onAccept()"
+            >
+              @if (changingStatus()) {
+                <ion-spinner name="crescent" />
+              } @else {
+                Akceptuj
+              }
+            </ion-button>
+          }
+          @if (canReject()) {
+            <ion-button
+              color="danger"
+              fill="outline"
+              [disabled]="changingStatus()"
+              (click)="onReject()"
+            >
+              @if (changingStatus()) {
+                <ion-spinner name="crescent" />
+              } @else {
+                Odrzuć
+              }
+            </ion-button>
+          }
+          @if (canComplete()) {
+            <ion-button
+              color="success"
+              fill="outline"
+              [disabled]="changingStatus()"
+              (click)="onComplete()"
+            >
+              @if (changingStatus()) {
+                <ion-spinner name="crescent" />
+              } @else {
+                Zakończ
+              }
+            </ion-button>
+          }
+        </div>
+      }
+
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        @if (errorMessage()) {
+          <ion-text color="danger">
+            <p class="error-banner">{{ errorMessage() }}</p>
+          </ion-text>
+        }
+
+        <ion-item>
+          <ion-select
+            label="Helikopter"
+            labelPlacement="stacked"
+            formControlName="helicopterId"
+            placeholder="Wybierz helikopter"
+          >
+            @for (h of helicopters(); track h.id) {
+              <ion-select-option [value]="h.id">
+                {{ h.regNumber }} — {{ h.type }}
+              </ion-select-option>
+            }
+          </ion-select>
+        </ion-item>
+        <app-field-errors [control]="form.get('helicopterId')" [messages]="helicopterIdErrors" />
+
+        <ion-item>
+          <ion-select
+            label="Pilot"
+            labelPlacement="stacked"
+            formControlName="pilotId"
+            placeholder="Opcjonalnie"
+          >
+            @for (p of pilots(); track p.id) {
+              <ion-select-option [value]="p.id">
+                {{ p.firstName }} {{ p.lastName }}
+              </ion-select-option>
+            }
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-select
+            label="Załoga"
+            labelPlacement="stacked"
+            formControlName="crewMemberIds"
+            placeholder="Opcjonalnie"
+            [multiple]="true"
+          >
+            @for (c of crewMembers(); track c.id) {
+              <ion-select-option [value]="c.id">
+                {{ c.firstName }} {{ c.lastName }} ({{ c.role }})
+              </ion-select-option>
+            }
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-select
+            label="Lotnisko wylotu"
+            labelPlacement="stacked"
+            formControlName="departureAirfieldId"
+            placeholder="Wybierz lotnisko"
+          >
+            @for (a of airfields(); track a.id) {
+              <ion-select-option [value]="a.id">{{ a.name }}</ion-select-option>
+            }
+          </ion-select>
+        </ion-item>
+        <app-field-errors
+          [control]="form.get('departureAirfieldId')"
+          [messages]="departureAirfieldIdErrors"
+        />
+
+        <ion-item>
+          <ion-select
+            label="Lotnisko przylotu"
+            labelPlacement="stacked"
+            formControlName="arrivalAirfieldId"
+            placeholder="Wybierz lotnisko"
+          >
+            @for (a of airfields(); track a.id) {
+              <ion-select-option [value]="a.id">{{ a.name }}</ion-select-option>
+            }
+          </ion-select>
+        </ion-item>
+        <app-field-errors
+          [control]="form.get('arrivalAirfieldId')"
+          [messages]="arrivalAirfieldIdErrors"
+        />
+
+        <ion-item>
+          <ion-select
+            label="Operacje"
+            labelPlacement="stacked"
+            formControlName="operationIds"
+            placeholder="Wybierz operacje"
+            [multiple]="true"
+          >
+            @for (op of operations(); track op.id) {
+              <ion-select-option [value]="op.id">
+                {{ op.autoNumber }} — {{ op.shortDescription }}
+              </ion-select-option>
+            }
+          </ion-select>
+        </ion-item>
+        <app-field-errors [control]="form.get('operationIds')" [messages]="operationIdsErrors" />
+
+        <ion-item>
+          <ion-input
+            label="Planowany wylot"
+            labelPlacement="stacked"
+            formControlName="plannedDeparture"
+            type="datetime-local"
+          />
+        </ion-item>
+        <app-field-errors
+          [control]="form.get('plannedDeparture')"
+          [messages]="plannedDepartureErrors"
+        />
+
+        <ion-item>
+          <ion-input
+            label="Planowane lądowanie"
+            labelPlacement="stacked"
+            formControlName="plannedLanding"
+            type="datetime-local"
+          />
+        </ion-item>
+        <app-field-errors
+          [control]="form.get('plannedLanding')"
+          [messages]="plannedLandingErrors"
+        />
+
+        <ion-item>
+          <ion-input
+            label="Szacowana trasa (km)"
+            labelPlacement="stacked"
+            formControlName="estimatedRouteKm"
+            type="number"
+            min="1"
+            placeholder="Wprowadź dystans w km"
+          />
+        </ion-item>
+        <app-field-errors
+          [control]="form.get('estimatedRouteKm')"
+          [messages]="estimatedRouteKmErrors"
+        />
+
+        @if (canEdit()) {
+          <ion-button expand="block" type="submit" [disabled]="saving()" class="ion-margin-top">
+            @if (saving()) {
+              <ion-spinner name="crescent" />
+            } @else {
+              Zapisz zmiany
+            }
+          </ion-button>
+        }
+      </form>
+    }
+
+    @if (order(); as o) {
+      <app-confirm-delete-modal
+        [isOpen]="deleteModalOpen()"
+        [deleting]="deleting()"
+        [message]="'Czy na pewno chcesz usunąć zlecenie <strong>' + o.autoNumber + '</strong>?'"
+        (confirm)="confirmDelete()"
+        (dismiss)="closeDeleteModal()"
+      />
+    }
+  </ion-grid>
+</ion-content>
