@@ -24,7 +24,7 @@
             <h2>{{ user.email }}</h2>
             <p>{{ user.firstName }} {{ user.lastName }}</p>
           </ion-label>
-          <ion-badge slot="end" class="ion-margin-end">{{ roleLabel(user.role) }}</ion-badge>
+          <ion-badge slot="end" color="medium" class="ion-margin-end">{{ roleLabel(user.role) }}</ion-badge>
           @if (isAdmin()) {
             <ion-button slot="end" fill="outline" (click)="openRoleModal(user)">
               Zmień rolę
