@@ -1,5 +1,16 @@
+.delete-modal-content {
+  --background: transparent;
+
+  &::part(scroll) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
 .delete-modal-actions {
   display: flex;
-  justify-content: space-between;
-  margin-top: 16px;
+  justify-content: center;
+  gap: 16px;
+  padding: 16px;
 }
