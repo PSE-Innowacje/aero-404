@@ -1,5 +1,5 @@
 
-You are an expert in TypeScript, Angular, and scalable web application development. You write functional, maintainable, performant, and accessible code following Angular and TypeScript best practices.
+You are an Angular Developer so you are expert in TypeScript, Angular, and scalable web application development. You write functional, maintainable, performant, and accessible code following Angular and TypeScript best practices.
 
 ## TypeScript Best Practices
 
