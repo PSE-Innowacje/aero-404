@@ -9,6 +9,7 @@ import {
   IonHeader,
   IonInput,
   IonItem,
+  IonModal,
   IonProgressBar,
   IonSelect,
   IonSelectOption,
@@ -42,6 +43,7 @@ const ROLE_OPTIONS: { value: CrewRole; label: string }[] = [
     IonHeader,
     IonInput,
     IonItem,
+    IonModal,
     IonProgressBar,
     IonSelect,
     IonSelectOption,
@@ -64,6 +66,8 @@ export class CrewEditPage implements OnInit {
   loadError = signal(false);
   saving = signal(false);
   errorMessage = signal('');
+  deleteModalOpen = signal(false);
+  deleting = signal(false);
 
   readonly roleOptions = ROLE_OPTIONS;
 
@@ -148,6 +152,32 @@ export class CrewEditPage implements OnInit {
         this.saving.set(false);
         this.errorMessage.set(
           getErrorMessage(err, 'Nie udało się zapisać zmian.'),
+        );
+      },
+    });
+  }
+
+  openDeleteModal(): void {
+    this.deleteModalOpen.set(true);
+  }
+
+  closeDeleteModal(): void {
+    this.deleteModalOpen.set(false);
+  }
+
+  confirmDelete(): void {
+    this.deleting.set(true);
+    this.crewApi.delete(this.memberId).subscribe({
+      next: () => {
+        this.deleting.set(false);
+        this.closeDeleteModal();
+        this.router.navigate(['/admin/crew']);
+      },
+      error: (err) => {
+        this.deleting.set(false);
+        this.closeDeleteModal();
+        this.errorMessage.set(
+          getErrorMessage(err, 'Nie udało się usunąć członka załogi.'),
         );
       },
     });
