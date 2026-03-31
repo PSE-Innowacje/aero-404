@@ -24,9 +24,51 @@
             <h2>{{ user.email }}</h2>
             <p>{{ user.firstName }} {{ user.lastName }}</p>
           </ion-label>
-          <ion-badge slot="end">{{ roleLabel(user.role) }}</ion-badge>
+          <ion-badge slot="end" class="ion-margin-end">{{ roleLabel(user.role) }}</ion-badge>
+          <ion-button slot="end" fill="outline" (click)="openRoleModal(user)">
+            Zmień rolę
+          </ion-button>
         </ion-item>
       }
     </ion-list>
   }
+
+  <ion-modal [isOpen]="roleModalOpen()" (didDismiss)="closeRoleModal()">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Zmień rolę</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="closeRoleModal()">Zamknij</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        @if (selectedUser(); as user) {
+          <p><strong>{{ user.firstName }} {{ user.lastName }}</strong> ({{ user.email }})</p>
+        }
+        <ion-list>
+          <ion-radio-group [value]="selectedRole()" (ionChange)="onRoleChange($event)">
+            @for (opt of roleOptions; track opt.value) {
+              <ion-item>
+                <ion-radio [value]="opt.value" labelPlacement="end">{{ opt.label }}</ion-radio>
+              </ion-item>
+            }
+          </ion-radio-group>
+        </ion-list>
+        <ion-button
+          expand="block"
+          class="ion-margin-top"
+          [disabled]="saving() || selectedRole() === selectedUser()?.role"
+          (click)="saveRole()"
+        >
+          @if (saving()) {
+            Zapisywanie...
+          } @else {
+            Zapisz
+          }
+        </ion-button>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 </ion-content>
