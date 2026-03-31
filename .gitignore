@@ -1,0 +1,11 @@
+# frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+frontend/.env
+frontend/.claude
+frontend/CLAUDE.md
+
+# backend
+backend/.claude
+backend/CLAUDE.md
