@@ -59,6 +59,12 @@ export const routes: Routes = [
       import('./pages/landing-site-add/landing-site-add').then((m) => m.LandingSiteAddPage),
   },
   {
+    path: 'admin/landing-sites/edit/:id',
+    canActivate: [authGuard],
+    loadComponent: () =>
+      import('./pages/landing-site-edit/landing-site-edit').then((m) => m.LandingSiteEditPage),
+  },
+  {
     path: 'admin/users',
     canActivate: [authGuard],
     loadComponent: () => import('./pages/users/users').then((m) => m.UsersPage),
