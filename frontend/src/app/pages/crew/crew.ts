@@ -1,4 +1,5 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
+import { ViewWillEnter } from '@ionic/angular';
 import { RouterLink } from '@angular/router';
 import {
   IonBadge,
@@ -46,14 +47,14 @@ const ROLE_LABELS: Record<string, string> = {
   templateUrl: './crew.html',
   styleUrl: './crew.scss',
 })
-export class CrewPage implements OnInit {
+export class CrewPage implements ViewWillEnter {
   private crewApi = inject(CrewApiService);
 
   crew = signal<CrewMemberResponseDto[]>([]);
   loading = signal(true);
   errorMessage = signal('');
 
-  ngOnInit(): void {
+  ionViewWillEnter(): void {
     this.loadCrew();
   }
 

@@ -30,6 +30,11 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/crew-add/crew-add').then((m) => m.CrewAddPage),
   },
   {
+    path: 'admin/crew/edit/:id',
+    canActivate: [authGuard],
+    loadComponent: () => import('./pages/crew-edit/crew-edit').then((m) => m.CrewEditPage),
+  },
+  {
     path: 'admin/landing-sites',
     canActivate: [authGuard],
     loadComponent: () =>

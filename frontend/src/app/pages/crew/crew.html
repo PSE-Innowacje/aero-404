@@ -22,7 +22,7 @@
   @if (crew().length > 0) {
     <ion-list>
       @for (member of crew(); track member.id) {
-        <ion-item>
+        <ion-item button [routerLink]="'/admin/crew/edit/' + member.id">
           <ion-label>
             <h2>{{ member.firstName }} {{ member.lastName }}</h2>
             <p>{{ member.email }}</p>
