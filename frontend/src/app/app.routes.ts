@@ -94,6 +94,12 @@ export const routes: Routes = [
       import('./pages/operation-add/operation-add').then((m) => m.OperationAddPage),
   },
   {
+    path: 'operations/edit/:id',
+    canActivate: [authGuard],
+    loadComponent: () =>
+      import('./pages/operation-edit/operation-edit').then((m) => m.OperationEditPage),
+  },
+  {
     path: 'flight-tickets',
     canActivate: [authGuard],
     loadComponent: () =>

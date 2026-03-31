@@ -23,7 +23,7 @@
   @if (operations().length > 0) {
     <ion-list>
       @for (op of operations(); track op.id) {
-        <ion-item>
+        <ion-item button [routerLink]="'/operations/edit/' + op.id">
           <ion-label>
             <h2>{{ op.autoNumber }}</h2>
             <p>{{ op.shortDescription }}</p>
