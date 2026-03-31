@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import {
   IonApp,
   IonContent,
@@ -23,6 +23,7 @@ import {
   clipboardOutline,
   listOutline,
   locationOutline,
+  logOutOutline,
   peopleOutline,
   personOutline,
 } from 'ionicons/icons';
@@ -32,6 +33,7 @@ addIcons({
   'clipboard-outline': clipboardOutline,
   'list-outline': listOutline,
   'location-outline': locationOutline,
+  'log-out-outline': logOutOutline,
   'people-outline': peopleOutline,
   'person-outline': personOutline,
 });
@@ -61,8 +63,14 @@ addIcons({
 })
 export class App implements OnInit {
   private userDataService = inject(UserDataService);
+  private router = inject(Router);
 
   ngOnInit() {
     this.userDataService.loadFromStorage();
+  }
+
+  logout() {
+    this.userDataService.clearUser();
+    this.router.navigate(['/login']);
   }
 }

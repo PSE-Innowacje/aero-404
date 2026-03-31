@@ -66,6 +66,13 @@
             <ion-label>Lista zleceń</ion-label>
           </ion-item>
         </ion-list>
+        <ion-list>
+          <ion-list-header>Użytkownik</ion-list-header>
+          <ion-item button (click)="logout()">
+            <ion-icon slot="start" name="log-out-outline" />
+            <ion-label>Wyloguj</ion-label>
+          </ion-item>
+        </ion-list>
       </ion-content>
     </ion-menu>
     <ion-router-outlet id="main-content" />
