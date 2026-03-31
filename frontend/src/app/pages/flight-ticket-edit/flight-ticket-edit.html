@@ -56,6 +56,24 @@
           </ion-list>
         }
 
+        @if (o.crewMembers.length > 0) {
+          <p class="ion-padding-start"><strong>Członkowie załogi:</strong></p>
+          <ion-list>
+            @for (member of o.crewMembers; track member.id) {
+              <ion-item button [routerLink]="'/admin/crew/edit/' + member.id">
+                <ion-label>
+                  <h3>{{ member.firstName }} {{ member.lastName }}</h3>
+                  @if (member.role === 'PILOT') {
+                    <p>Data ważności licencji: {{ member.licenseExpiry | date: 'dd.MM.yyyy' }}</p>
+                  }
+                  <p>Data ważności szkolenia: {{ member.trainingExpiry | date: 'dd.MM.yyyy' }}</p>
+                </ion-label>
+                <ion-badge slot="end">{{ member.role }}</ion-badge>
+              </ion-item>
+            }
+          </ion-list>
+        }
+
         <div class="status-actions ion-margin-top ion-margin-bottom">
           @if (canSubmit()) {
             <ion-button
@@ -71,20 +89,6 @@
               }
             </ion-button>
           }
-          @if (canAccept()) {
-            <ion-button
-              color="success"
-              fill="outline"
-              [disabled]="changingStatus()"
-              (click)="onAccept()"
-            >
-              @if (changingStatus()) {
-                <ion-spinner name="crescent" />
-              } @else {
-                Akceptuj
-              }
-            </ion-button>
-          }
           @if (canReject()) {
             <ion-button
               color="danger"
@@ -96,6 +100,18 @@
                 <ion-spinner name="crescent" />
               } @else {
                 Odrzuć
+              }
+            </ion-button>
+          }
+          @if (canAccept()) {
+            <ion-button
+              [disabled]="changingStatus()"
+              (click)="onAccept()"
+            >
+              @if (changingStatus()) {
+                <ion-spinner name="crescent" />
+              } @else {
+                Akceptuj
               }
             </ion-button>
           }
