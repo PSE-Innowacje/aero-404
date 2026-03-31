@@ -18,7 +18,7 @@ import {
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import {
-  airplaneOutline,
+  libraryOutline,
   clipboardOutline,
   listOutline,
   locationOutline,
@@ -27,7 +27,7 @@ import {
 } from 'ionicons/icons';
 
 addIcons({
-  'airplane-outline': airplaneOutline,
+  'library-outline': libraryOutline,
   'clipboard-outline': clipboardOutline,
   'list-outline': listOutline,
   'location-outline': locationOutline,
