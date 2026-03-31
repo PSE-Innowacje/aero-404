@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import {
@@ -37,13 +37,17 @@ import { getErrorMessage } from '../../shared/utils/error-messages';
   templateUrl: './login.html',
   styleUrl: './login.scss',
 })
-export class LoginPage implements OnInit {
+export class LoginPage {
   private fb = inject(FormBuilder);
   private authApi = inject(AuthApiService);
   private userDataService = inject(UserDataService);
   private router = inject(Router);
 
-  ngOnInit() {
+  ionViewWillEnter() {
+    this.form.reset();
+    this.errorMessage.set('');
+    this.loading.set(false);
+
     if (this.userDataService.isLoggedIn()) {
       this.router.navigate(['/operations']);
     }
