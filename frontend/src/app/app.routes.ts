@@ -20,6 +20,12 @@ export const routes: Routes = [
       import('./pages/helicopters/helicopters').then((m) => m.HelicoptersPage),
   },
   {
+    path: 'admin/helicopters/add',
+    canActivate: [authGuard],
+    loadComponent: () =>
+      import('./pages/helicopter-add/helicopter-add').then((m) => m.HelicopterAddPage),
+  },
+  {
     path: 'admin/crew',
     canActivate: [authGuard],
     loadComponent: () => import('./pages/crew/crew').then((m) => m.CrewPage),

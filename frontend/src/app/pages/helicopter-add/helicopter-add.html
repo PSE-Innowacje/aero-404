@@ -1,0 +1,124 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/admin/helicopters" text="Wróć" />
+    </ion-buttons>
+    <ion-title>Dodaj helikopter</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    @if (errorMessage()) {
+      <ion-text color="danger">
+        <p class="error-banner">{{ errorMessage() }}</p>
+      </ion-text>
+    }
+
+    <ion-item>
+      <ion-input
+        label="Numer rejestracyjny"
+        labelPlacement="stacked"
+        formControlName="regNumber"
+        type="text"
+        maxlength="30"
+        placeholder="Wprowadź numer rejestracyjny"
+      />
+    </ion-item>
+    <app-field-errors [control]="form.get('regNumber')" [messages]="regNumberErrors" />
+
+    <ion-item>
+      <ion-input
+        label="Typ"
+        labelPlacement="stacked"
+        formControlName="type"
+        type="text"
+        maxlength="100"
+        placeholder="Wprowadź typ helikoptera"
+      />
+    </ion-item>
+    <app-field-errors [control]="form.get('type')" [messages]="typeErrors" />
+
+    <ion-item>
+      <ion-input
+        label="Opis"
+        labelPlacement="stacked"
+        formControlName="description"
+        type="text"
+        maxlength="100"
+        placeholder="Opcjonalnie"
+      />
+    </ion-item>
+    <app-field-errors [control]="form.get('description')" [messages]="descriptionErrors" />
+
+    <ion-item>
+      <ion-input
+        label="Maksymalna załoga"
+        labelPlacement="stacked"
+        formControlName="maxCrew"
+        type="number"
+        min="1"
+        max="10"
+        placeholder="1–10"
+      />
+    </ion-item>
+    <app-field-errors [control]="form.get('maxCrew')" [messages]="maxCrewErrors" />
+
+    <ion-item>
+      <ion-input
+        label="Maksymalna ładowność (kg)"
+        labelPlacement="stacked"
+        formControlName="maxPayload"
+        type="number"
+        min="1"
+        max="1000"
+        placeholder="1–1000"
+      />
+    </ion-item>
+    <app-field-errors [control]="form.get('maxPayload')" [messages]="maxPayloadErrors" />
+
+    <ion-item>
+      <ion-select
+        label="Status"
+        labelPlacement="stacked"
+        formControlName="status"
+        placeholder="Wybierz status"
+      >
+        @for (opt of statusOptions; track opt.value) {
+          <ion-select-option [value]="opt.value">{{ opt.label }}</ion-select-option>
+        }
+      </ion-select>
+    </ion-item>
+    <app-field-errors [control]="form.get('status')" [messages]="statusErrors" />
+
+    <ion-item>
+      <ion-input
+        label="Data przeglądu"
+        labelPlacement="stacked"
+        formControlName="reviewDate"
+        type="date"
+      />
+    </ion-item>
+
+    <ion-item>
+      <ion-input
+        label="Zasięg (km)"
+        labelPlacement="stacked"
+        formControlName="rangeKm"
+        type="number"
+        min="1"
+        max="1000"
+        placeholder="1–1000"
+      />
+    </ion-item>
+    <app-field-errors [control]="form.get('rangeKm')" [messages]="rangeKmErrors" />
+
+    <ion-button expand="block" type="submit" [disabled]="loading()" class="ion-margin-top">
+      @if (loading()) {
+        <ion-spinner name="crescent" />
+      } @else {
+        Dodaj helikopter
+      }
+    </ion-button>
+  </form>
+</ion-content>
