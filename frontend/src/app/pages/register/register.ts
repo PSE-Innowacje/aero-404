@@ -4,6 +4,7 @@ import { Router, RouterLink } from '@angular/router';
 import {
   IonButton,
   IonContent,
+  IonGrid,
   IonHeader,
   IonInput,
   IonItem,
@@ -26,6 +27,7 @@ import { getErrorMessage } from '../../shared/utils/error-messages';
     FieldErrorsComponent,
     IonButton,
     IonContent,
+    IonGrid,
     IonHeader,
     IonInput,
     IonItem,

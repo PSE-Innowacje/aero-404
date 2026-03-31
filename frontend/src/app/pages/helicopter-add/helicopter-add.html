@@ -8,6 +8,7 @@
 </ion-header>
 
 <ion-content class="ion-padding">
+  <ion-grid [fixed]="true">
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     @if (errorMessage()) {
       <ion-text color="danger">
@@ -121,4 +122,5 @@
       }
     </ion-button>
   </form>
+  </ion-grid>
 </ion-content>

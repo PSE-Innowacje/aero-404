@@ -8,6 +8,7 @@
 </ion-header>
 
 <ion-content class="ion-padding">
+  <ion-grid [fixed]="true">
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     @if (errorMessage()) {
       <ion-text color="danger">
@@ -65,8 +66,10 @@
   </form>
 
   <app-map-landing
+  style="display: block; height: 400px;"
     [latitude]="mapLatitude()"
     [longitude]="mapLongitude()"
     (coordinatesChange)="onMapCoordsChange($event)"
   />
+  </ion-grid>
 </ion-content>

@@ -11,6 +11,7 @@
 </ion-header>
 
 <ion-content class="ion-padding">
+  <ion-grid [fixed]="true">
   @if (loadError()) {
     <ion-text color="danger">
       <p class="error-banner">{{ errorMessage() }}</p>
@@ -84,6 +85,7 @@
     </form>
 
     <app-map-landing
+       style="display: block; height: 400px;"
       [latitude]="mapLatitude()"
       [longitude]="mapLongitude()"
       (coordinatesChange)="onMapCoordsChange($event)"
@@ -112,4 +114,5 @@
       </ng-template>
     </ion-modal>
   }
+  </ion-grid>
 </ion-content>

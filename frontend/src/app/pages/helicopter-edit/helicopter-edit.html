@@ -11,6 +11,7 @@
 </ion-header>
 
 <ion-content class="ion-padding">
+  <ion-grid [fixed]="true">
   @if (loadError()) {
     <ion-text color="danger">
       <p class="error-banner">{{ errorMessage() }}</p>
@@ -164,4 +165,5 @@
       </ng-template>
     </ion-modal>
   }
+  </ion-grid>
 </ion-content>

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {
   IonButtons,
   IonContent,
+  IonGrid,
   IonHeader,
   IonMenuButton,
   IonTitle,
@@ -10,7 +11,7 @@ import {
 
 @Component({
   selector: 'app-flight-tickets',
-  imports: [IonButtons, IonContent, IonHeader, IonMenuButton, IonTitle, IonToolbar],
+  imports: [IonButtons, IonContent, IonGrid, IonHeader, IonMenuButton, IonTitle, IonToolbar],
   templateUrl: './flight-tickets.html',
   styleUrl: './flight-tickets.scss',
 })

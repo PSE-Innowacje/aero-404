@@ -5,6 +5,7 @@
 </ion-header>
 
 <ion-content class="ion-padding">
+  <ion-grid [fixed]="true">
   <div class="register-wrapper">
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
       @if (errorMessage()) {
@@ -74,4 +75,5 @@
       </ion-button>
     </form>
   </div>
+  </ion-grid>
 </ion-content>

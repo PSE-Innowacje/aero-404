@@ -11,6 +11,7 @@
   }
 </ion-header>
 <ion-content class="ion-padding">
+  <ion-grid [fixed]="true">
   @if (errorMessage()) {
     <ion-note color="danger">{{ errorMessage() }}</ion-note>
   }
@@ -31,4 +32,5 @@
       }
     </ion-list>
   }
+  </ion-grid>
 </ion-content>
