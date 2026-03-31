@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -20,6 +20,7 @@ import {
   IonSpinner,
 } from '@ionic/angular/standalone';
 import { AuthApiService } from '../../services/auth-api.service';
+import { UserDataService } from '../../services/user-data.service';
 import { ErrorMessage, FieldErrorsComponent } from '../../shared/field-errors/field-errors';
 
 function emailValidator(control: AbstractControl): ValidationErrors | null {
@@ -49,10 +50,17 @@ function emailValidator(control: AbstractControl): ValidationErrors | null {
   templateUrl: './register.html',
   styleUrl: './register.scss',
 })
-export class RegisterPage {
+export class RegisterPage implements OnInit {
   private fb = inject(FormBuilder);
   private authApi = inject(AuthApiService);
+  private userDataService = inject(UserDataService);
   private router = inject(Router);
+
+  ngOnInit() {
+    if (this.userDataService.isLoggedIn()) {
+      this.router.navigate(['/operations']);
+    }
+  }
 
   loading = signal(false);
   errorMessage = signal('');
