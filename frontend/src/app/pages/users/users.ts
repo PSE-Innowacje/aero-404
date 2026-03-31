@@ -72,6 +72,10 @@ export class UsersPage implements OnInit {
   selectedRole = signal<UserRole | null>(null);
   saving = signal(false);
 
+  deleteModalOpen = signal(false);
+  userToDelete = signal<UserResponseDto | null>(null);
+  deleting = signal(false);
+
   readonly roleOptions = ROLE_OPTIONS;
 
   ngOnInit(): void {
@@ -119,6 +123,35 @@ export class UsersPage implements OnInit {
         this.errorMessage.set(getErrorMessage(err, 'Nie udało się zmienić roli.'));
         this.saving.set(false);
         this.closeRoleModal();
+      },
+    });
+  }
+
+  openDeleteModal(user: UserResponseDto): void {
+    this.userToDelete.set(user);
+    this.deleteModalOpen.set(true);
+  }
+
+  closeDeleteModal(): void {
+    this.deleteModalOpen.set(false);
+    this.userToDelete.set(null);
+  }
+
+  confirmDelete(): void {
+    const user = this.userToDelete();
+    if (!user) return;
+
+    this.deleting.set(true);
+    this.usersApi.delete(user.id).subscribe({
+      next: () => {
+        this.users.update((list) => list.filter((u) => u.id !== user.id));
+        this.deleting.set(false);
+        this.closeDeleteModal();
+      },
+      error: (err) => {
+        this.errorMessage.set(getErrorMessage(err, 'Nie udało się usunąć użytkownika.'));
+        this.deleting.set(false);
+        this.closeDeleteModal();
       },
     });
   }
