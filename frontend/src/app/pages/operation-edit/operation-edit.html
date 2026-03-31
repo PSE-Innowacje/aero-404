@@ -30,6 +30,13 @@
           {{ statusLabel(op.status) }}
         </ion-badge>
       </ion-item>
+
+      @if (routePoints().length > 0) {
+        <app-map-route
+          style="display: block; height: 400px; margin: 16px 0;"
+          [points]="routePoints()"
+        />
+      }
     }
 
     <form [formGroup]="form" (ngSubmit)="onSubmit()">

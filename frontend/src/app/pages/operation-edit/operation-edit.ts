@@ -19,7 +19,6 @@ import {
   IonInput,
   IonItem,
   IonLabel,
-  IonNote,
   IonProgressBar,
   IonSelect,
   IonSelectOption,
@@ -32,6 +31,7 @@ import {
 } from '@ionic/angular/standalone';
 
 import { ConfirmDeleteModalComponent } from '../../shared/confirm-delete-modal/confirm-delete-modal';
+import { MapRouteComponent } from '../../shared/map-route/map-route';
 import { PlannedOperationApiService } from '../../services/planned-operation-api.service';
 import {
   ActivityType,
@@ -75,6 +75,7 @@ const STATUS_COLORS: Record<OperationStatus, string> = {
     ReactiveFormsModule,
     ConfirmDeleteModalComponent,
     FieldErrorsComponent,
+    MapRouteComponent,
     IonBackButton,
     IonBadge,
     IonButton,
@@ -85,7 +86,6 @@ const STATUS_COLORS: Record<OperationStatus, string> = {
     IonInput,
     IonItem,
     IonLabel,
-    IonNote,
     IonProgressBar,
     IonSelect,
     IonSelectOption,
@@ -113,6 +113,7 @@ export class OperationEditPage implements OnInit {
   deleting = signal(false);
 
   operation = signal<PlannedOperationResponseDto | null>(null);
+  routePoints = signal<[number, number][]>([]);
 
   readonly activityOptions = ACTIVITY_OPTIONS;
 
@@ -253,6 +254,12 @@ export class OperationEditPage implements OnInit {
     this.operationApi.getById(this.operationId).subscribe({
       next: (op) => {
         this.operation.set(op);
+        console.log(op.routePoints)
+        try {
+          this.routePoints.set(op.routePoints ? JSON.parse(op.routePoints) : []);
+        } catch {
+          this.routePoints.set([]);
+        }
         this.form.patchValue({
           orderNumber: op.orderNumber ?? '',
           shortDescription: op.shortDescription,
