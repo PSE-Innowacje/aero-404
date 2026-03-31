@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Logowanie</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="login-wrapper">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      @if (errorMessage()) {
+        <ion-text color="danger">
+          <p class="error-banner">{{ errorMessage() }}</p>
+        </ion-text>
+      }
+
+      <ion-item>
+        <ion-input
+          label="Email"
+          labelPlacement="stacked"
+          formControlName="email"
+          type="email"
+          placeholder="Wprowadź email"
+        />
+      </ion-item>
+      <app-field-errors [control]="form.get('email')" [messages]="emailErrors" />
+
+      <ion-item>
+        <ion-input
+          label="Hasło"
+          labelPlacement="stacked"
+          formControlName="password"
+          type="password"
+          placeholder="Wprowadź hasło"
+        />
+      </ion-item>
+      <app-field-errors [control]="form.get('password')" [messages]="passwordErrors" />
+
+      <ion-button expand="block" type="submit" [disabled]="loading()" class="submit-btn">
+        @if (loading()) {
+          <ion-spinner name="crescent" />
+        } @else {
+          Zaloguj się
+        }
+      </ion-button>
+
+      <ion-button expand="block" fill="clear" routerLink="/register" class="register-link">
+        Nie masz konta? Zarejestruj się
+      </ion-button>
+    </form>
+  </div>
+</ion-content>
