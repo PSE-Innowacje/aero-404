@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -9,6 +9,7 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import {
+  AlertController,
   IonBackButton,
   IonBadge,
   IonButton,
@@ -40,6 +41,7 @@ import {
 } from '../../models/planned-operation.model';
 import { ErrorMessage, FieldErrorsComponent } from '../../shared/field-errors/field-errors';
 import { getErrorMessage } from '../../shared/utils/error-messages';
+import { UserDataService } from '../../services/user-data.service';
 
 const ACTIVITY_OPTIONS: { value: ActivityType; label: string }[] = [
   { value: 'VISUAL_INSPECTION', label: 'Inspekcja wizualna' },
@@ -104,6 +106,8 @@ export class OperationEditPage implements OnInit {
   private router = inject(Router);
   private route = inject(ActivatedRoute);
   private toastCtrl = inject(ToastController);
+  private alertCtrl = inject(AlertController);
+  private userDataService = inject(UserDataService);
 
   loadingData = signal(true);
   loadError = signal(false);
@@ -114,6 +118,23 @@ export class OperationEditPage implements OnInit {
 
   operation = signal<PlannedOperationResponseDto | null>(null);
   routePoints = signal<[number, number][]>([]);
+  changingStatus = signal(false);
+
+  canReject = computed(() => {
+    return this.userDataService.role() === 'SUPERVISOR' && this.operation()?.status === 'INTRODUCED';
+  });
+
+  canConfirm = computed(() => {
+    return this.userDataService.role() === 'SUPERVISOR' && this.operation()?.status === 'INTRODUCED';
+  });
+
+  canResign = computed(() => {
+    const status = this.operation()?.status;
+    return (
+      this.userDataService.role() === 'PLANNER' &&
+      (status === 'INTRODUCED' || status === 'CONFIRMED' || status === 'SCHEDULED')
+    );
+  });
 
   readonly activityOptions = ACTIVITY_OPTIONS;
 
@@ -239,6 +260,94 @@ export class OperationEditPage implements OnInit {
         this.deleting.set(false);
         this.closeDeleteModal();
         this.errorMessage.set(getErrorMessage(err, 'Nie udało się usunąć operacji.'));
+      },
+    });
+  }
+
+  onReject(): void {
+    this.changingStatus.set(true);
+    this.errorMessage.set('');
+    this.operationApi.reject(this.operationId).subscribe({
+      next: async () => {
+        this.changingStatus.set(false);
+        const toast = await this.toastCtrl.create({
+          message: 'Operacja odrzucona',
+          duration: 2000,
+          color: 'success',
+        });
+        await toast.present();
+        this.router.navigate(['/operations']);
+      },
+      error: (err) => {
+        this.changingStatus.set(false);
+        this.errorMessage.set(getErrorMessage(err, 'Nie udało się odrzucić operacji.'));
+      },
+    });
+  }
+
+  async onConfirm(): Promise<void> {
+    const alert = await this.alertCtrl.create({
+      header: 'Potwierdź do planu',
+      message: 'Podaj planowane daty realizacji operacji.',
+      inputs: [
+        { name: 'plannedDateFrom', type: 'date', label: 'Data od' },
+        { name: 'plannedDateTo', type: 'date', label: 'Data do' },
+      ],
+      buttons: [
+        { text: 'Anuluj', role: 'cancel' },
+        {
+          text: 'Potwierdź',
+          handler: (data) => {
+            if (!data.plannedDateFrom || !data.plannedDateTo) {
+              return false;
+            }
+            this.changingStatus.set(true);
+            this.errorMessage.set('');
+            this.operationApi
+              .confirm(this.operationId, data.plannedDateFrom, data.plannedDateTo)
+              .subscribe({
+                next: async () => {
+                  this.changingStatus.set(false);
+                  const toast = await this.toastCtrl.create({
+                    message: 'Operacja potwierdzona do planu',
+                    duration: 2000,
+                    color: 'success',
+                  });
+                  await toast.present();
+                  this.router.navigate(['/operations']);
+                },
+                error: (err) => {
+                  this.changingStatus.set(false);
+                  this.errorMessage.set(
+                    getErrorMessage(err, 'Nie udało się potwierdzić operacji.'),
+                  );
+                },
+              });
+            return true;
+          },
+        },
+      ],
+    });
+    await alert.present();
+  }
+
+  onResign(): void {
+    this.changingStatus.set(true);
+    this.errorMessage.set('');
+    this.operationApi.resign(this.operationId).subscribe({
+      next: async () => {
+        this.changingStatus.set(false);
+        const toast = await this.toastCtrl.create({
+          message: 'Zrezygnowano z operacji',
+          duration: 2000,
+          color: 'success',
+        });
+        await toast.present();
+        this.router.navigate(['/operations']);
+      },
+      error: (err) => {
+        this.changingStatus.set(false);
+        this.errorMessage.set(getErrorMessage(err, 'Nie udało się zrezygnować z operacji.'));
       },
     });
   }

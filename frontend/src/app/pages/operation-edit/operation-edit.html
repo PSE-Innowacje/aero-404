@@ -31,6 +31,43 @@
         </ion-badge>
       </ion-item>
 
+      <div class="status-actions ion-margin-top ion-margin-bottom">
+        <ion-button
+          [color]="canReject() ? 'primary' : 'medium'"
+          fill="outline"
+          [disabled]="!canReject() || changingStatus()"
+          (click)="onReject()"
+        >
+          @if (changingStatus() && canReject()) {
+            <ion-spinner name="crescent" />
+          } @else {
+            Odrzuć
+          }
+        </ion-button>
+
+        <ion-button
+          [color]="canConfirm() ? 'primary' : 'medium'"
+          fill="outline"
+          [disabled]="!canConfirm() || changingStatus()"
+          (click)="onConfirm()"
+        >
+          Potwierdź do planu
+        </ion-button>
+
+        <ion-button
+          [color]="canResign() ? 'primary' : 'medium'"
+          fill="outline"
+          [disabled]="!canResign() || changingStatus()"
+          (click)="onResign()"
+        >
+          @if (changingStatus() && canResign()) {
+            <ion-spinner name="crescent" />
+          } @else {
+            Rezygnuj
+          }
+        </ion-button>
+      </div>
+
       @if (routePoints().length > 0) {
         <app-map-route
           style="display: block; height: 400px; margin: 16px 0;"
