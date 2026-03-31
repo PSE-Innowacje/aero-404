@@ -64,5 +64,9 @@
     </ion-button>
   </form>
 
-  <app-map-landing [latitude]="mapLatitude()" [longitude]="mapLongitude()" />
+  <app-map-landing
+    [latitude]="mapLatitude()"
+    [longitude]="mapLongitude()"
+    (coordinatesChange)="onMapCoordsChange($event)"
+  />
 </ion-content>

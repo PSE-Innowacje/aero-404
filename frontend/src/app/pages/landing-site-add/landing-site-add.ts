@@ -88,6 +88,10 @@ export class LandingSiteAddPage {
     ),
   );
 
+  onMapCoordsChange(coords: { latitude: number; longitude: number }): void {
+    this.form.patchValue({ latitude: coords.latitude, longitude: coords.longitude });
+  }
+
   onSubmit(): void {
     if (this.form.invalid) {
       this.form.markAllAsTouched();
