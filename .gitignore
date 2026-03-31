@@ -5,9 +5,9 @@ frontend/.angular/
 frontend/.env
 frontend/.claude
 frontend/CLAUDE.md
+frontend/.netlify
 
 # backend
 backend/.claude
 backend/CLAUDE.md
-# Local Netlify folder
-.netlify
+
