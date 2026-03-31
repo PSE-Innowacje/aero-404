@@ -1,5 +1,7 @@
-import { Component, inject, OnInit, ViewChild } from '@angular/core';
-import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { Component, DestroyRef, inject, OnInit, ViewChild } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { filter } from 'rxjs';
 import {
   IonApp,
   IonContent,
@@ -65,11 +67,18 @@ export class App implements OnInit {
   @ViewChild(IonMenu) menu!: IonMenu;
   private userDataService = inject(UserDataService);
   private router = inject(Router);
+  private destroyRef = inject(DestroyRef);
 
   isLoggedIn = this.userDataService.isLoggedIn;
 
   ngOnInit() {
     this.userDataService.loadFromStorage();
+    this.router.events
+      .pipe(
+        filter((e) => e instanceof NavigationEnd),
+        takeUntilDestroyed(this.destroyRef),
+      )
+      .subscribe(() => this.menu?.close());
   }
 
   async logout() {
