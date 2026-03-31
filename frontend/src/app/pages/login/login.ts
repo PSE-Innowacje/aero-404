@@ -7,7 +7,7 @@ import {
   AbstractControl,
   ValidationErrors,
 } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import {
   IonButton,
   IonContent,
@@ -33,6 +33,7 @@ function emailValidator(control: AbstractControl): ValidationErrors | null {
   selector: 'app-login',
   imports: [
     ReactiveFormsModule,
+    RouterLink,
     FieldErrorsComponent,
     IonButton,
     IonContent,
