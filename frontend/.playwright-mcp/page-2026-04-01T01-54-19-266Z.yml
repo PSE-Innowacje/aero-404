@@ -1,0 +1,67 @@
+- generic [ref=e3]:
+  - generic:
+    - navigation "menu" [ref=e40]:
+      - generic [ref=e41]:
+        - generic:
+          - generic [ref=e46]:
+            - generic: AERO
+          - generic [ref=e49]:
+            - generic:
+              - list [ref=e50]:
+                - generic [ref=e52]:
+                  - generic: Administracja
+                - listitem [ref=e53]:
+                  - link "Helikoptery" [ref=e54] [cursor=pointer]:
+                    - /url: /admin/helicopters
+                    - img [ref=e55]:
+                      - img [ref=e57]
+                    - generic [ref=e65]: Helikoptery
+                - listitem [ref=e66]:
+                  - link "Członkowie załogi" [ref=e67] [cursor=pointer]:
+                    - /url: /admin/crew
+                    - img [ref=e68]:
+                      - img [ref=e70]
+                    - generic [ref=e77]: Członkowie załogi
+                - listitem [ref=e78]:
+                  - link "Lądowiska planowe" [ref=e79] [cursor=pointer]:
+                    - /url: /admin/landing-sites
+                    - img [ref=e80]:
+                      - img [ref=e82]
+                    - generic [ref=e87]: Lądowiska planowe
+              - list [ref=e88]:
+                - generic [ref=e90]:
+                  - generic: Planowanie operacji
+                - listitem [ref=e91]:
+                  - link "Lista operacji" [ref=e92] [cursor=pointer]:
+                    - /url: /operations
+                    - img [ref=e93]:
+                      - img [ref=e95]
+                    - generic [ref=e100]: Lista operacji
+              - list [ref=e101]:
+                - generic [ref=e103]:
+                  - generic: Zlecenia na lot
+                - listitem [ref=e104]:
+                  - link "Lista zleceń" [ref=e105] [cursor=pointer]:
+                    - /url: /flight-tickets
+                    - img [ref=e106]:
+                      - img [ref=e108]
+                    - generic [ref=e115]: Lista zleceń
+              - list [ref=e116]:
+                - generic [ref=e118]:
+                  - generic: Użytkownik
+                - listitem [ref=e119]:
+                  - button "Wyloguj" [ref=e120] [cursor=pointer]:
+                    - img [ref=e121]:
+                      - img [ref=e123]
+                    - generic [ref=e127]: Wyloguj
+    - generic [ref=e128]:
+      - banner [ref=e129]:
+        - generic [ref=e131]:
+          - generic [ref=e134]:
+            - generic: Lista operacji
+          - link "Dodaj" [ref=e136] [cursor=pointer]:
+            - /url: /operations/add
+            - generic [ref=e137]:
+              - generic: Dodaj
+        - progressbar [ref=e138]
+      - main [ref=e144]

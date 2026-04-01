@@ -1,0 +1,49 @@
+- generic [ref=e3]:
+  - generic:
+    - navigation "menu" [ref=e4]:
+      - generic [ref=e5]:
+        - generic:
+          - generic [ref=e10]:
+            - generic: AERO
+          - generic [ref=e13]:
+            - generic:
+              - list [ref=e14]:
+                - generic [ref=e16]:
+                  - generic: Planowanie operacji
+                - listitem [ref=e17]:
+                  - link "Lista operacji" [ref=e18] [cursor=pointer]:
+                    - /url: /operations
+                    - img [ref=e19]:
+                      - img [ref=e21]
+                    - generic [ref=e26]: Lista operacji
+              - list [ref=e27]:
+                - generic [ref=e29]:
+                  - generic: Użytkownik
+                - listitem [ref=e30]:
+                  - button "Wyloguj" [ref=e31] [cursor=pointer]:
+                    - img [ref=e32]:
+                      - img [ref=e34]
+                    - generic [ref=e38]: Wyloguj
+    - generic [ref=e40]:
+      - banner [ref=e41]:
+        - generic [ref=e46]:
+          - generic: Logowanie
+      - main [ref=e47]:
+        - generic [ref=e52]:
+          - generic [ref=e58]:
+            - generic:
+              - generic: Email
+            - textbox "Email" [ref=e60]:
+              - /placeholder: Wprowadź email
+          - generic [ref=e66]:
+            - generic:
+              - generic: Hasło
+            - textbox "Hasło" [ref=e68]:
+              - /placeholder: Wprowadź hasło
+          - button "Zaloguj się" [ref=e70] [cursor=pointer]:
+            - generic [ref=e71]:
+              - generic: Zaloguj się
+          - link "Nie masz konta? Zarejestruj się" [ref=e73] [cursor=pointer]:
+            - /url: /register
+            - generic [ref=e74]:
+              - generic: Nie masz konta? Zarejestruj się

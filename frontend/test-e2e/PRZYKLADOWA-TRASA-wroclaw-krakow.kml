@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Przelot Wrocław - Kraków</name>
+    <description>Trasa lotu z Wrocławia do Krakowa przez Warszawę</description>
+    
+    <!-- Styl dla znaczników -->
+    <Style id="startStyle">
+      <IconStyle>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/paddle/grn-circle.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    
+    <Style id="stopStyle">
+      <IconStyle>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/paddle/ylw-circle.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    
+    <Style id="endStyle">
+      <IconStyle>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/paddle/red-circle.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    
+    <Style id="lineStyle">
+      <LineStyle>
+        <color>ff0000ff</color>
+        <width>3</width>
+      </LineStyle>
+    </Style>
+    
+    <!-- Lotnisko Wrocław (start) -->
+    <Placemark>
+      <name>Wrocław - Start</name>
+      <description>Lotnisko Wrocław-Strachowice</description>
+      <styleUrl>#startStyle</styleUrl>
+      <Point>
+        <coordinates>17.0385,51.1079,0</coordinates>
+      </Point>
+    </Placemark>
+    
+    <!-- Lotnisko Warszawa (stop pośredni) -->
+    <Placemark>
+      <name>Warszawa - Stop pośredni</name>
+      <description>Lotnisko Chopina w Warszawie</description>
+      <styleUrl>#stopStyle</styleUrl>
+      <Point>
+        <coordinates>21.0122,52.2297,0</coordinates>
+      </Point>
+    </Placemark>
+    
+    <!-- Lotnisko Kraków (koniec) -->
+    <Placemark>
+      <name>Kraków - Koniec</name>
+      <description>Lotnisko Kraków-Balice</description>
+      <styleUrl>#endStyle</styleUrl>
+      <Point>
+        <coordinates>19.9450,50.0647,0</coordinates>
+      </Point>
+    </Placemark>
+    
+
+  </Document>
+</kml>

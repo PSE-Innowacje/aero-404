@@ -1,0 +1,12 @@
+- generic [ref=e40]:
+  - banner [ref=e41]:
+    - generic [ref=e43]:
+      - button "menu" [ref=e46] [cursor=pointer]:
+        - generic [ref=e48]:
+          - img:
+            - generic:
+              - img
+      - generic [ref=e51]:
+        - generic: Lista operacji
+    - progressbar [ref=e52]
+  - main [ref=e58]

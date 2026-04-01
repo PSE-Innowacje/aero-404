@@ -1,0 +1,87 @@
+- generic [ref=e3]:
+  - generic:
+    - navigation "menu" [ref=e283]:
+      - generic [ref=e284]:
+        - generic:
+          - generic [ref=e289]:
+            - generic: AERO
+          - generic [ref=e292]:
+            - generic:
+              - list [ref=e293]:
+                - generic [ref=e295]:
+                  - generic: Planowanie operacji
+                - listitem [ref=e296]:
+                  - link "Lista operacji" [ref=e297] [cursor=pointer]:
+                    - /url: /operations
+                    - img [ref=e298]:
+                      - img [ref=e300]
+                    - generic [ref=e305]: Lista operacji
+              - list [ref=e306]:
+                - generic [ref=e308]:
+                  - generic: Użytkownik
+                - listitem [ref=e309]:
+                  - button "Wyloguj" [ref=e310] [cursor=pointer]:
+                    - img [ref=e311]:
+                      - img [ref=e313]
+                    - generic [ref=e317]: Wyloguj
+    - generic [ref=e318]:
+      - banner [ref=e319]:
+        - generic [ref=e321]:
+          - generic [ref=e324]:
+            - generic: Lista operacji
+          - link "Dodaj" [ref=e326] [cursor=pointer]:
+            - /url: /operations/add
+            - generic [ref=e327]:
+              - generic: Dodaj
+      - main [ref=e328]:
+        - list [ref=e332]:
+          - listitem [ref=e333]:
+            - 'link "OP-2026-5DBE657B 44 Trasa: 553 km · 02.03.2026 – 27.03.2026 Zaplanowana" [ref=e334] [cursor=pointer]':
+              - /url: /operations/edit/5
+              - generic [ref=e335]:
+                - generic [ref=e337]:
+                  - heading "OP-2026-5DBE657B" [level=2] [ref=e338]
+                  - paragraph [ref=e339]: "44"
+                  - paragraph [ref=e340]: "Trasa: 553 km · 02.03.2026 – 27.03.2026"
+                - generic [ref=e341]:
+                  - generic: Zaplanowana
+          - listitem [ref=e342]:
+            - 'link "OP-2026-BD7B99E5 sdf Trasa: 553 km · 02.04.2026 – 02.05.2026 Potwierdzona" [ref=e343] [cursor=pointer]':
+              - /url: /operations/edit/6
+              - generic [ref=e344]:
+                - generic [ref=e346]:
+                  - heading "OP-2026-BD7B99E5" [level=2] [ref=e347]
+                  - paragraph [ref=e348]: sdf
+                  - paragraph [ref=e349]: "Trasa: 553 km · 02.04.2026 – 02.05.2026"
+                - generic [ref=e350]:
+                  - generic: Potwierdzona
+          - listitem [ref=e351]:
+            - 'link "OP-2026-B85F11DB 33 Trasa: 1342 km · 26.02.2026 – 02.04.2026 Zaplanowana" [ref=e352] [cursor=pointer]':
+              - /url: /operations/edit/3
+              - generic [ref=e353]:
+                - generic [ref=e355]:
+                  - heading "OP-2026-B85F11DB" [level=2] [ref=e356]
+                  - paragraph [ref=e357]: "33"
+                  - paragraph [ref=e358]: "Trasa: 1342 km · 26.02.2026 – 02.04.2026"
+                - generic [ref=e359]:
+                  - generic: Zaplanowana
+          - listitem [ref=e360]:
+            - 'link "OP-2026-8D9C4363 322 Trasa: 19 km · 10.03.2026 – 28.03.2026 Zrezygnowana" [ref=e361] [cursor=pointer]':
+              - /url: /operations/edit/2
+              - generic [ref=e362]:
+                - generic [ref=e364]:
+                  - heading "OP-2026-8D9C4363" [level=2] [ref=e365]
+                  - paragraph [ref=e366]: "322"
+                  - paragraph [ref=e367]: "Trasa: 19 km · 10.03.2026 – 28.03.2026"
+                - generic [ref=e368]:
+                  - generic: Zrezygnowana
+          - listitem [ref=e369]:
+            - 'link "OP-2026-B7D79598 222 Trasa: 1090 km · 10.03.2026 – 03.04.2026 Odrzucona" [ref=e370] [cursor=pointer]':
+              - /url: /operations/edit/4
+              - generic [ref=e371]:
+                - generic [ref=e373]:
+                  - heading "OP-2026-B7D79598" [level=2] [ref=e374]
+                  - paragraph [ref=e375]: "222"
+                  - paragraph [ref=e376]: "Trasa: 1090 km · 10.03.2026 – 03.04.2026"
+                - generic [ref=e377]:
+                  - generic: Odrzucona

@@ -1,0 +1,23 @@
+- generic [ref=e248]:
+  - banner [ref=e249]:
+    - generic [ref=e254]:
+      - generic: Logowanie
+  - main [ref=e255]:
+    - generic [ref=e260]:
+      - generic [ref=e266]:
+        - generic:
+          - generic: Email
+        - textbox "Email" [ref=e268]:
+          - /placeholder: Wprowadź email
+      - generic [ref=e274]:
+        - generic:
+          - generic: Hasło
+        - textbox "Hasło" [ref=e276]:
+          - /placeholder: Wprowadź hasło
+      - button "Zaloguj się" [ref=e278] [cursor=pointer]:
+        - generic [ref=e279]:
+          - generic: Zaloguj się
+      - link "Nie masz konta? Zarejestruj się" [ref=e281] [cursor=pointer]:
+        - /url: /register
+        - generic [ref=e282]:
+          - generic: Nie masz konta? Zarejestruj się

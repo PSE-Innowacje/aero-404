@@ -1,0 +1,125 @@
+- generic [ref=e3]:
+  - generic:
+    - navigation "menu" [ref=e4]:
+      - generic [ref=e5]:
+        - generic:
+          - generic [ref=e10]:
+            - generic: AERO
+          - generic [ref=e13]:
+            - generic:
+              - list [ref=e14]:
+                - generic [ref=e16]:
+                  - generic: Administracja
+                - listitem [ref=e17]:
+                  - link "Helikoptery" [ref=e18] [cursor=pointer]:
+                    - /url: /admin/helicopters
+                    - img [ref=e19]:
+                      - img [ref=e21]
+                    - generic [ref=e29]: Helikoptery
+                - listitem [ref=e30]:
+                  - link "Członkowie załogi" [ref=e31] [cursor=pointer]:
+                    - /url: /admin/crew
+                    - img [ref=e32]:
+                      - img [ref=e34]
+                    - generic [ref=e41]: Członkowie załogi
+                - listitem [ref=e42]:
+                  - link "Lądowiska planowe" [ref=e43] [cursor=pointer]:
+                    - /url: /admin/landing-sites
+                    - img [ref=e44]:
+                      - img [ref=e46]
+                    - generic [ref=e51]: Lądowiska planowe
+                - listitem [ref=e52]:
+                  - link "Użytkownicy" [ref=e53] [cursor=pointer]:
+                    - /url: /admin/users
+                    - img [ref=e54]:
+                      - img [ref=e56]
+                    - generic [ref=e61]: Użytkownicy
+              - list [ref=e62]:
+                - generic [ref=e64]:
+                  - generic: Planowanie operacji
+                - listitem [ref=e65]:
+                  - link "Lista operacji" [ref=e66] [cursor=pointer]:
+                    - /url: /operations
+                    - img [ref=e67]:
+                      - img [ref=e69]
+                    - generic [ref=e74]: Lista operacji
+              - list [ref=e75]:
+                - generic [ref=e77]:
+                  - generic: Zlecenia na lot
+                - listitem [ref=e78]:
+                  - link "Lista zleceń" [ref=e79] [cursor=pointer]:
+                    - /url: /flight-tickets
+                    - img [ref=e80]:
+                      - img [ref=e82]
+                    - generic [ref=e89]: Lista zleceń
+              - list [ref=e90]:
+                - generic [ref=e92]:
+                  - generic: Użytkownik
+                - listitem [ref=e93]:
+                  - button "Wyloguj" [ref=e94] [cursor=pointer]:
+                    - img [ref=e95]:
+                      - img [ref=e97]
+                    - generic [ref=e101]: Wyloguj
+    - generic [ref=e132]:
+      - banner [ref=e133]:
+        - generic [ref=e135]:
+          - button "Wróć" [ref=e138] [cursor=pointer]:
+            - generic [ref=e139]:
+              - img:
+                - generic:
+                  - img
+              - generic [ref=e140]: Wróć
+          - generic [ref=e143]:
+            - generic: Edytuj helikopter
+      - main [ref=e144]:
+        - generic [ref=e148]:
+          - generic [ref=e154]:
+            - generic:
+              - generic: Numer rejestracyjny
+            - textbox "Numer rejestracyjny" [ref=e156]:
+              - /placeholder: Wprowadź numer rejestracyjny
+              - text: SP-HAA
+          - generic [ref=e162]:
+            - generic:
+              - generic: Typ
+            - textbox "Typ" [ref=e164]:
+              - /placeholder: Wprowadź typ helikoptera
+              - text: Robinson R44
+          - generic [ref=e170]:
+            - generic:
+              - generic: Opis
+            - textbox "Opis" [ref=e172]:
+              - /placeholder: Opcjonalnie
+              - text: Light utility helicopter used for training and private flights
+          - generic [ref=e178]:
+            - generic:
+              - generic: Maksymalna załoga
+            - spinbutton "Maksymalna załoga" [ref=e180]: "2"
+          - generic [ref=e186]:
+            - generic:
+              - generic: Maksymalna ładowność (kg)
+            - spinbutton "Maksymalna ładowność (kg)" [ref=e188]: "300"
+          - generic [ref=e194] [cursor=pointer]:
+            - generic:
+              - generic: Status
+            - generic [ref=e196]:
+              - generic [ref=e197]: Aktywny
+              - button "Status, Aktywny" [ref=e198]
+            - img [ref=e199]:
+              - img [ref=e201]
+          - generic [ref=e208]:
+            - generic:
+              - generic: Data przeglądu
+            - textbox "Data przeglądu" [ref=e210]:
+              - /placeholder: ""
+              - text: 2026-04-05
+          - generic [ref=e216]:
+            - generic:
+              - generic: Zasięg (km)
+            - spinbutton "Zasięg (km)" [ref=e218]: "560"
+          - button "Usuń" [ref=e220] [cursor=pointer]:
+            - generic [ref=e221]:
+              - generic: Usuń
+          - button "Zapisz zmiany" [ref=e223] [cursor=pointer]:
+            - generic [ref=e224]:
+              - generic: Zapisz zmiany

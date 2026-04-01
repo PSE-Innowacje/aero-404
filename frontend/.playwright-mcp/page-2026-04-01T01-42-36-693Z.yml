@@ -1,0 +1,99 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - generic:
+      - navigation "menu" [ref=e4]:
+        - generic [ref=e5]:
+          - generic:
+            - generic [ref=e10]:
+              - generic: AERO
+            - generic [ref=e13]:
+              - generic:
+                - list [ref=e14]:
+                  - generic [ref=e16]:
+                    - generic: Planowanie operacji
+                  - listitem [ref=e17]:
+                    - link "Lista operacji" [ref=e18] [cursor=pointer]:
+                      - /url: /operations
+                      - img [ref=e19]:
+                        - img [ref=e21]
+                      - generic [ref=e26]: Lista operacji
+                - list [ref=e27]:
+                  - generic [ref=e29]:
+                    - generic: Użytkownik
+                  - listitem [ref=e30]:
+                    - button "Wyloguj" [ref=e31] [cursor=pointer]:
+                      - img [ref=e32]:
+                        - img [ref=e34]
+                      - generic [ref=e38]: Wyloguj
+      - generic [ref=e40]:
+        - banner [ref=e41]:
+          - button [ref=e129] [cursor=pointer]:
+            - generic [ref=e47]:
+              - img:
+                - generic:
+                  - img
+              - generic [ref=e48]: Wróć
+        - main [ref=e52]:
+          - generic [ref=e56]:
+            - generic [ref=e62]:
+              - generic:
+                - generic: Numer zlecenia
+              - textbox [ref=e130]:
+                - /placeholder: Opcjonalnie
+                - text: TEST-002
+            - generic [ref=e70]:
+              - generic:
+                - generic: Krótki opis
+              - textbox [ref=e131]:
+                - /placeholder: Wprowadź opis operacji
+                - text: Testowa operacja planner
+            - generic [ref=e78]:
+              - generic:
+                - generic: Proponowana data od
+              - textbox [ref=e132]: 2026-05-01
+            - generic [ref=e86]:
+              - generic:
+                - generic: Proponowana data do
+              - textbox [ref=e133]: 2026-05-15
+            - generic [ref=e94] [cursor=pointer]:
+              - generic:
+                - generic: Typy aktywności
+              - generic [ref=e96]:
+                - generic [ref=e97]: Wybierz typy
+                - button [expanded] [ref=e134]
+              - img [ref=e99]:
+                - img [ref=e101]
+            - generic [ref=e108]:
+              - generic:
+                - generic: Dodatkowe informacje
+              - textbox [ref=e137]:
+                - /placeholder: Opcjonalnie
+                - text: Test
+            - generic [ref=e117]:
+              - generic:
+                - generic: Adresy e-mail kontaktowe
+              - textbox [ref=e138]:
+                - /placeholder: Opcjonalnie
+                - text: test@test.pl
+            - generic [ref=e123]:
+              - generic [ref=e124]: Plik KML
+              - button [ref=e139]
+            - button [ref=e140] [cursor=pointer]
+  - alertdialog "Typy aktywności" [ref=e143]:
+    - heading "Typy aktywności" [level=2] [ref=e145]
+    - generic [ref=e146]:
+      - checkbox "Inspekcja wizualna" [ref=e147] [cursor=pointer]:
+        - generic [ref=e150]: Inspekcja wizualna
+      - checkbox "Skan 3D" [checked] [active] [ref=e151] [cursor=pointer]:
+        - generic [ref=e154]: Skan 3D
+      - checkbox "Lokalizacja usterki" [ref=e155] [cursor=pointer]:
+        - generic [ref=e158]: Lokalizacja usterki
+      - checkbox "Zdjęcia" [ref=e159] [cursor=pointer]:
+        - generic [ref=e162]: Zdjęcia
+      - checkbox "Patrol" [ref=e163] [cursor=pointer]:
+        - generic [ref=e166]: Patrol
+    - generic [ref=e167]:
+      - button "Cancel" [ref=e168] [cursor=pointer]:
+        - generic [ref=e169]: Cancel
+      - button "OK" [ref=e170] [cursor=pointer]:
+        - generic [ref=e171]: OK

@@ -1,0 +1,84 @@
+- generic [ref=e3]:
+  - generic:
+    - navigation "menu" [ref=e4]:
+      - generic [ref=e5]:
+        - generic:
+          - generic [ref=e10]:
+            - generic: AERO
+          - generic [ref=e13]:
+            - generic:
+              - list [ref=e14]:
+                - generic [ref=e16]:
+                  - generic: Planowanie operacji
+                - listitem [ref=e17]:
+                  - link "Lista operacji" [ref=e18] [cursor=pointer]:
+                    - /url: /operations
+                    - img [ref=e19]:
+                      - img [ref=e21]
+                    - generic [ref=e26]: Lista operacji
+              - list [ref=e27]:
+                - generic [ref=e29]:
+                  - generic: Użytkownik
+                - listitem [ref=e30]:
+                  - button "Wyloguj" [ref=e31] [cursor=pointer]:
+                    - img [ref=e32]:
+                      - img [ref=e34]
+                    - generic [ref=e38]: Wyloguj
+    - generic [ref=e40]:
+      - banner [ref=e41]:
+        - generic [ref=e43]:
+          - button "Wróć" [ref=e46] [cursor=pointer]:
+            - generic [ref=e47]:
+              - img:
+                - generic:
+                  - img
+              - generic [ref=e48]: Wróć
+          - generic [ref=e51]:
+            - generic: Dodaj operację
+      - main [ref=e52]:
+        - generic [ref=e56]:
+          - generic [ref=e62]:
+            - generic:
+              - generic: Numer zlecenia
+            - textbox "Numer zlecenia" [ref=e64]:
+              - /placeholder: Opcjonalnie
+          - generic [ref=e70]:
+            - generic:
+              - generic: Krótki opis
+            - textbox "Krótki opis" [ref=e72]:
+              - /placeholder: Wprowadź opis operacji
+          - generic [ref=e78]:
+            - generic:
+              - generic: Proponowana data od
+            - textbox "Proponowana data od" [ref=e80]:
+              - /placeholder: ""
+          - generic [ref=e86]:
+            - generic:
+              - generic: Proponowana data do
+            - textbox "Proponowana data do" [ref=e88]:
+              - /placeholder: ""
+          - generic [ref=e94] [cursor=pointer]:
+            - generic:
+              - generic: Typy aktywności
+            - generic [ref=e96]:
+              - generic [ref=e97]: Wybierz typy
+              - button "Typy aktywności, Wybierz typy" [ref=e98]
+            - img [ref=e99]:
+              - img [ref=e101]
+          - generic [ref=e108]:
+            - generic:
+              - generic: Dodatkowe informacje
+            - textbox "Dodatkowe informacje" [ref=e111]:
+              - /placeholder: Opcjonalnie
+          - generic [ref=e117]:
+            - generic:
+              - generic: Adresy e-mail kontaktowe
+            - textbox "Adresy e-mail kontaktowe" [ref=e119]:
+              - /placeholder: Opcjonalnie
+          - generic [ref=e123]:
+            - generic:
+              - generic [ref=e124]: Plik KML
+              - button "Choose File" [ref=e125]
+          - button "Dodaj operację" [ref=e127] [cursor=pointer]:
+            - generic [ref=e128]:
+              - generic: Dodaj operację

@@ -1,0 +1,135 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - generic:
+      - navigation "menu" [ref=e4]:
+        - generic [ref=e5]:
+          - generic:
+            - generic [ref=e10]:
+              - generic: AERO
+            - generic [ref=e13]:
+              - generic:
+                - list [ref=e14]:
+                  - generic [ref=e16]:
+                    - generic: Administracja
+                  - listitem [ref=e17]:
+                    - link "Helikoptery" [ref=e18] [cursor=pointer]:
+                      - /url: /admin/helicopters
+                      - img [ref=e19]:
+                        - img [ref=e21]
+                      - generic [ref=e29]: Helikoptery
+                  - listitem [ref=e30]:
+                    - link "Członkowie załogi" [ref=e31] [cursor=pointer]:
+                      - /url: /admin/crew
+                      - img [ref=e32]:
+                        - img [ref=e34]
+                      - generic [ref=e41]: Członkowie załogi
+                  - listitem [ref=e42]:
+                    - link "Lądowiska planowe" [ref=e43] [cursor=pointer]:
+                      - /url: /admin/landing-sites
+                      - img [ref=e44]:
+                        - img [ref=e46]
+                      - generic [ref=e51]: Lądowiska planowe
+                  - listitem [ref=e52]:
+                    - link "Użytkownicy" [ref=e53] [cursor=pointer]:
+                      - /url: /admin/users
+                      - img [ref=e54]:
+                        - img [ref=e56]
+                      - generic [ref=e61]: Użytkownicy
+                - list [ref=e62]:
+                  - generic [ref=e64]:
+                    - generic: Planowanie operacji
+                  - listitem [ref=e65]:
+                    - link "Lista operacji" [ref=e66] [cursor=pointer]:
+                      - /url: /operations
+                      - img [ref=e67]:
+                        - img [ref=e69]
+                      - generic [ref=e74]: Lista operacji
+                - list [ref=e75]:
+                  - generic [ref=e77]:
+                    - generic: Zlecenia na lot
+                  - listitem [ref=e78]:
+                    - link "Lista zleceń" [ref=e79] [cursor=pointer]:
+                      - /url: /flight-tickets
+                      - img [ref=e80]:
+                        - img [ref=e82]
+                      - generic [ref=e89]: Lista zleceń
+                - list [ref=e90]:
+                  - generic [ref=e92]:
+                    - generic: Użytkownik
+                  - listitem [ref=e93]:
+                    - button "Wyloguj" [ref=e94] [cursor=pointer]:
+                      - img [ref=e95]:
+                        - img [ref=e97]
+                      - generic [ref=e101]: Wyloguj
+      - generic [ref=e103]:
+        - banner [ref=e104]:
+          - button [ref=e192] [cursor=pointer]:
+            - generic [ref=e110]:
+              - img:
+                - generic:
+                  - img
+              - generic [ref=e111]: Wróć
+        - main [ref=e115]:
+          - generic [ref=e119]:
+            - generic [ref=e125]:
+              - generic:
+                - generic: Numer zlecenia
+              - textbox [ref=e193]:
+                - /placeholder: Opcjonalnie
+                - text: TEST-001
+            - generic [ref=e133]:
+              - generic:
+                - generic: Krótki opis
+              - textbox [ref=e194]:
+                - /placeholder: Wprowadź opis operacji
+                - text: Testowa operacja e2e
+            - generic [ref=e141]:
+              - generic:
+                - generic: Proponowana data od
+              - textbox [ref=e195]: 2026-05-01
+            - generic [ref=e149]:
+              - generic:
+                - generic: Proponowana data do
+              - textbox [ref=e196]: 2026-05-15
+            - generic [ref=e157] [cursor=pointer]:
+              - generic:
+                - generic: Typy aktywności
+              - generic [ref=e159]:
+                - generic [ref=e160]: Wybierz typy
+                - button [expanded] [ref=e197]
+              - img [ref=e162]:
+                - img [ref=e164]
+            - generic [ref=e171]:
+              - generic:
+                - generic: Dodatkowe informacje
+              - textbox [ref=e200]:
+                - /placeholder: Opcjonalnie
+                - text: Test info
+            - generic [ref=e180]:
+              - generic:
+                - generic: Adresy e-mail kontaktowe
+              - textbox [ref=e201]:
+                - /placeholder: Opcjonalnie
+                - text: test@test.pl
+            - generic [ref=e186]:
+              - generic [ref=e187]: Plik KML
+              - button [ref=e202]
+            - button [ref=e203] [cursor=pointer]
+  - alertdialog "Typy aktywności" [ref=e206]:
+    - heading "Typy aktywności" [level=2] [ref=e208]
+    - generic [ref=e209]:
+      - checkbox "Inspekcja wizualna" [checked] [active] [ref=e210] [cursor=pointer]:
+        - generic [ref=e213]: Inspekcja wizualna
+      - checkbox "Skan 3D" [ref=e214] [cursor=pointer]:
+        - generic [ref=e217]: Skan 3D
+      - checkbox "Lokalizacja usterki" [ref=e218] [cursor=pointer]:
+        - generic [ref=e221]: Lokalizacja usterki
+      - checkbox "Zdjęcia" [ref=e222] [cursor=pointer]:
+        - generic [ref=e225]: Zdjęcia
+      - checkbox "Patrol" [ref=e226] [cursor=pointer]:
+        - generic [ref=e229]: Patrol
+    - generic [ref=e230]:
+      - button "Cancel" [ref=e231] [cursor=pointer]:
+        - generic [ref=e232]: Cancel
+      - button "OK" [ref=e233] [cursor=pointer]:
+        - generic [ref=e234]: OK

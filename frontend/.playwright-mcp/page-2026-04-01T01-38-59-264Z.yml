@@ -1,0 +1,118 @@
+- generic [ref=e3]:
+  - generic:
+    - navigation "menu" [ref=e108]:
+      - generic [ref=e109]:
+        - generic:
+          - generic [ref=e114]:
+            - generic: AERO
+          - generic [ref=e117]:
+            - generic:
+              - list [ref=e118]:
+                - generic [ref=e120]:
+                  - generic: Administracja
+                - listitem [ref=e121]:
+                  - link "Helikoptery" [ref=e122] [cursor=pointer]:
+                    - /url: /admin/helicopters
+                    - img [ref=e123]:
+                      - img [ref=e125]
+                    - generic [ref=e133]: Helikoptery
+                - listitem [ref=e134]:
+                  - link "Członkowie załogi" [ref=e135] [cursor=pointer]:
+                    - /url: /admin/crew
+                    - img [ref=e136]:
+                      - img [ref=e138]
+                    - generic [ref=e145]: Członkowie załogi
+                - listitem [ref=e146]:
+                  - link "Lądowiska planowe" [ref=e147] [cursor=pointer]:
+                    - /url: /admin/landing-sites
+                    - img [ref=e148]:
+                      - img [ref=e150]
+                    - generic [ref=e155]: Lądowiska planowe
+                - listitem [ref=e156]:
+                  - link "Użytkownicy" [ref=e157] [cursor=pointer]:
+                    - /url: /admin/users
+                    - img [ref=e158]:
+                      - img [ref=e160]
+                    - generic [ref=e165]: Użytkownicy
+              - list [ref=e166]:
+                - generic [ref=e168]:
+                  - generic: Planowanie operacji
+                - listitem [ref=e169]:
+                  - link "Lista operacji" [ref=e170] [cursor=pointer]:
+                    - /url: /operations
+                    - img [ref=e171]:
+                      - img [ref=e173]
+                    - generic [ref=e178]: Lista operacji
+              - list [ref=e179]:
+                - generic [ref=e181]:
+                  - generic: Zlecenia na lot
+                - listitem [ref=e182]:
+                  - link "Lista zleceń" [ref=e183] [cursor=pointer]:
+                    - /url: /flight-tickets
+                    - img [ref=e184]:
+                      - img [ref=e186]
+                    - generic [ref=e193]: Lista zleceń
+              - list [ref=e194]:
+                - generic [ref=e196]:
+                  - generic: Użytkownik
+                - listitem [ref=e197]:
+                  - button "Wyloguj" [ref=e198] [cursor=pointer]:
+                    - img [ref=e199]:
+                      - img [ref=e201]
+                    - generic [ref=e205]: Wyloguj
+    - generic [ref=e40]:
+      - banner [ref=e41]:
+        - generic [ref=e51]:
+          - generic: Lista operacji
+      - main [ref=e58]:
+        - list [ref=e62]:
+          - listitem [ref=e63]:
+            - 'link "OP-2026-5DBE657B 44 Trasa: 553 km · 02.03.2026 – 27.03.2026 Zaplanowana" [ref=e64] [cursor=pointer]':
+              - /url: /operations/edit/5
+              - generic [ref=e65]:
+                - generic [ref=e67]:
+                  - heading "OP-2026-5DBE657B" [level=2] [ref=e68]
+                  - paragraph [ref=e69]: "44"
+                  - paragraph [ref=e70]: "Trasa: 553 km · 02.03.2026 – 27.03.2026"
+                - generic [ref=e71]:
+                  - generic: Zaplanowana
+          - listitem [ref=e72]:
+            - 'link "OP-2026-BD7B99E5 sdf Trasa: 553 km · 02.04.2026 – 02.05.2026 Potwierdzona" [ref=e73] [cursor=pointer]':
+              - /url: /operations/edit/6
+              - generic [ref=e74]:
+                - generic [ref=e76]:
+                  - heading "OP-2026-BD7B99E5" [level=2] [ref=e77]
+                  - paragraph [ref=e78]: sdf
+                  - paragraph [ref=e79]: "Trasa: 553 km · 02.04.2026 – 02.05.2026"
+                - generic [ref=e80]:
+                  - generic: Potwierdzona
+          - listitem [ref=e81]:
+            - 'link "OP-2026-B85F11DB 33 Trasa: 1342 km · 26.02.2026 – 02.04.2026 Zaplanowana" [ref=e82] [cursor=pointer]':
+              - /url: /operations/edit/3
+              - generic [ref=e83]:
+                - generic [ref=e85]:
+                  - heading "OP-2026-B85F11DB" [level=2] [ref=e86]
+                  - paragraph [ref=e87]: "33"
+                  - paragraph [ref=e88]: "Trasa: 1342 km · 26.02.2026 – 02.04.2026"
+                - generic [ref=e89]:
+                  - generic: Zaplanowana
+          - listitem [ref=e90]:
+            - 'link "OP-2026-8D9C4363 322 Trasa: 19 km · 10.03.2026 – 28.03.2026 Zrezygnowana" [ref=e91] [cursor=pointer]':
+              - /url: /operations/edit/2
+              - generic [ref=e92]:
+                - generic [ref=e94]:
+                  - heading "OP-2026-8D9C4363" [level=2] [ref=e95]
+                  - paragraph [ref=e96]: "322"
+                  - paragraph [ref=e97]: "Trasa: 19 km · 10.03.2026 – 28.03.2026"
+                - generic [ref=e98]:
+                  - generic: Zrezygnowana
+          - listitem [ref=e99]:
+            - 'link "OP-2026-B7D79598 222 Trasa: 1090 km · 10.03.2026 – 03.04.2026 Odrzucona" [ref=e100] [cursor=pointer]':
+              - /url: /operations/edit/4
+              - generic [ref=e101]:
+                - generic [ref=e103]:
+                  - heading "OP-2026-B7D79598" [level=2] [ref=e104]
+                  - paragraph [ref=e105]: "222"
+                  - paragraph [ref=e106]: "Trasa: 1090 km · 10.03.2026 – 03.04.2026"
+                - generic [ref=e107]:
+                  - generic: Odrzucona

@@ -1,0 +1,172 @@
+- generic [ref=e3]:
+  - generic:
+    - navigation "menu" [ref=e108]:
+      - generic [ref=e109]:
+        - generic:
+          - generic [ref=e114]:
+            - generic: AERO
+          - generic [ref=e117]:
+            - generic:
+              - list [ref=e118]:
+                - generic [ref=e120]:
+                  - generic: Administracja
+                - listitem [ref=e121]:
+                  - link "Helikoptery" [ref=e122] [cursor=pointer]:
+                    - /url: /admin/helicopters
+                    - img [ref=e123]:
+                      - img [ref=e125]
+                    - generic [ref=e133]: Helikoptery
+                - listitem [ref=e134]:
+                  - link "Członkowie załogi" [ref=e135] [cursor=pointer]:
+                    - /url: /admin/crew
+                    - img [ref=e136]:
+                      - img [ref=e138]
+                    - generic [ref=e145]: Członkowie załogi
+                - listitem [ref=e146]:
+                  - link "Lądowiska planowe" [ref=e147] [cursor=pointer]:
+                    - /url: /admin/landing-sites
+                    - img [ref=e148]:
+                      - img [ref=e150]
+                    - generic [ref=e155]: Lądowiska planowe
+                - listitem [ref=e156]:
+                  - link "Użytkownicy" [ref=e157] [cursor=pointer]:
+                    - /url: /admin/users
+                    - img [ref=e158]:
+                      - img [ref=e160]
+                    - generic [ref=e165]: Użytkownicy
+              - list [ref=e166]:
+                - generic [ref=e168]:
+                  - generic: Planowanie operacji
+                - listitem [ref=e169]:
+                  - link "Lista operacji" [ref=e170] [cursor=pointer]:
+                    - /url: /operations
+                    - img [ref=e171]:
+                      - img [ref=e173]
+                    - generic [ref=e178]: Lista operacji
+              - list [ref=e179]:
+                - generic [ref=e181]:
+                  - generic: Zlecenia na lot
+                - listitem [ref=e182]:
+                  - link "Lista zleceń" [ref=e183] [cursor=pointer]:
+                    - /url: /flight-tickets
+                    - img [ref=e184]:
+                      - img [ref=e186]
+                    - generic [ref=e193]: Lista zleceń
+              - list [ref=e194]:
+                - generic [ref=e196]:
+                  - generic: Użytkownik
+                - listitem [ref=e197]:
+                  - button "Wyloguj" [ref=e198] [cursor=pointer]:
+                    - img [ref=e199]:
+                      - img [ref=e201]
+                    - generic [ref=e205]: Wyloguj
+    - generic [ref=e206]:
+      - banner [ref=e207]:
+        - generic [ref=e209]:
+          - button "Wróć" [ref=e212] [cursor=pointer]:
+            - generic [ref=e213]:
+              - img:
+                - generic:
+                  - img
+              - generic [ref=e214]: Wróć
+          - generic [ref=e217]:
+            - generic: Edytuj operację
+      - main [ref=e218]:
+        - generic [ref=e221]:
+          - generic:
+            - generic [ref=e224]:
+              - generic [ref=e226]:
+                - paragraph [ref=e227]:
+                  - strong [ref=e228]: "Nr operacji:"
+                  - text: OP-2026-5DBE657B
+                - paragraph [ref=e229]:
+                  - strong [ref=e230]: "Trasa:"
+                  - text: 553 km
+                - paragraph [ref=e231]:
+                  - strong [ref=e232]: "Plik KML:"
+                  - text: —
+                - paragraph [ref=e233]:
+                  - strong [ref=e234]: "Wprowadził:"
+                  - text: a a
+              - generic [ref=e235]:
+                - generic: Zaplanowana
+            - generic [ref=e236]:
+              - generic:
+                - button "Odrzuć" [disabled]:
+                  - generic:
+                    - generic: Odrzuć
+              - generic:
+                - button "Potwierdź do planu" [disabled]:
+                  - generic:
+                    - generic: Potwierdź do planu
+              - generic:
+                - button "Rezygnuj" [disabled]:
+                  - generic:
+                    - generic: Rezygnuj
+            - generic [ref=e239]:
+              - generic:
+                - generic [ref=e243]:
+                  - button "+" [ref=e244] [cursor=pointer]
+                  - button "–" [ref=e245] [cursor=pointer]
+                - list [ref=e247]:
+                  - listitem [ref=e248]:
+                    - text: ©
+                    - link "OpenStreetMap" [ref=e249] [cursor=pointer]:
+                      - /url: https://www.openstreetmap.org/copyright
+                    - text: contributors.
+            - generic [ref=e250]:
+              - generic [ref=e256]:
+                - generic:
+                  - generic: Numer zlecenia
+                - textbox "Numer zlecenia" [disabled] [ref=e258]:
+                  - /placeholder: Opcjonalnie
+                  - text: "444"
+              - generic [ref=e264]:
+                - generic:
+                  - generic: Krótki opis
+                - textbox "Krótki opis" [disabled] [ref=e266]:
+                  - /placeholder: Wprowadź opis operacji
+                  - text: "44"
+              - generic [ref=e272]:
+                - generic:
+                  - generic: Proponowana data od
+                - textbox "Proponowana data od" [disabled] [ref=e274]:
+                  - /placeholder: ""
+                  - text: 2026-03-02
+              - generic [ref=e280]:
+                - generic:
+                  - generic: Proponowana data do
+                - textbox "Proponowana data do" [disabled] [ref=e282]:
+                  - /placeholder: ""
+                  - text: 2026-03-27
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic: Typy aktywności
+                            - generic:
+                              - generic:
+                                - generic: Lokalizacja usterki, Skan 3D
+                                - button "Typy aktywności, Lokalizacja usterki, Skan 3D" [disabled]
+                            - img:
+                              - generic:
+                                - img
+              - generic [ref=e288]:
+                - generic:
+                  - generic: Dodatkowe informacje
+                - textbox "Dodatkowe informacje" [disabled] [ref=e291]:
+                  - /placeholder: Opcjonalnie
+                  - text: werwer
+              - generic [ref=e297]:
+                - generic:
+                  - generic: Adresy e-mail kontaktowe
+                - textbox "Adresy e-mail kontaktowe" [disabled] [ref=e299]:
+                  - /placeholder: Opcjonalnie
+              - generic [ref=e303]:
+                - generic:
+                  - generic [ref=e304]: Plik KML
+                  - button "Choose File" [ref=e305]

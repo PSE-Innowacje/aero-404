@@ -1,0 +1,106 @@
+- generic [ref=e3]:
+  - generic:
+    - navigation "menu" [ref=e4]:
+      - generic [ref=e5]:
+        - generic:
+          - generic [ref=e10]:
+            - generic: AERO
+          - generic [ref=e13]:
+            - generic:
+              - list [ref=e14]:
+                - generic [ref=e16]:
+                  - generic: Administracja
+                - listitem [ref=e17]:
+                  - link "Helikoptery" [ref=e18] [cursor=pointer]:
+                    - /url: /admin/helicopters
+                    - img [ref=e19]:
+                      - img [ref=e21]
+                    - generic [ref=e29]: Helikoptery
+                - listitem [ref=e30]:
+                  - link "Członkowie załogi" [ref=e31] [cursor=pointer]:
+                    - /url: /admin/crew
+                    - img [ref=e32]:
+                      - img [ref=e34]
+                    - generic [ref=e41]: Członkowie załogi
+                - listitem [ref=e42]:
+                  - link "Lądowiska planowe" [ref=e43] [cursor=pointer]:
+                    - /url: /admin/landing-sites
+                    - img [ref=e44]:
+                      - img [ref=e46]
+                    - generic [ref=e51]: Lądowiska planowe
+                - listitem [ref=e52]:
+                  - link "Użytkownicy" [ref=e53] [cursor=pointer]:
+                    - /url: /admin/users
+                    - img [ref=e54]:
+                      - img [ref=e56]
+                    - generic [ref=e61]: Użytkownicy
+              - list [ref=e62]:
+                - generic [ref=e64]:
+                  - generic: Planowanie operacji
+                - listitem [ref=e65]:
+                  - link "Lista operacji" [ref=e66] [cursor=pointer]:
+                    - /url: /operations
+                    - img [ref=e67]:
+                      - img [ref=e69]
+                    - generic [ref=e74]: Lista operacji
+              - list [ref=e75]:
+                - generic [ref=e77]:
+                  - generic: Zlecenia na lot
+                - listitem [ref=e78]:
+                  - link "Lista zleceń" [ref=e79] [cursor=pointer]:
+                    - /url: /flight-tickets
+                    - img [ref=e80]:
+                      - img [ref=e82]
+                    - generic [ref=e89]: Lista zleceń
+              - list [ref=e90]:
+                - generic [ref=e92]:
+                  - generic: Użytkownik
+                - listitem [ref=e93]:
+                  - button "Wyloguj" [ref=e94] [cursor=pointer]:
+                    - img [ref=e95]:
+                      - img [ref=e97]
+                    - generic [ref=e101]: Wyloguj
+    - generic [ref=e103]:
+      - banner [ref=e104]:
+        - generic [ref=e106]:
+          - button "Wróć" [ref=e109] [cursor=pointer]:
+            - generic [ref=e110]:
+              - img:
+                - generic:
+                  - img
+              - generic [ref=e111]: Wróć
+          - generic [ref=e114]:
+            - generic: Dodaj użytkownika
+      - main [ref=e115]:
+        - generic [ref=e119]:
+          - generic [ref=e125]:
+            - generic:
+              - generic: Imię
+            - textbox "Imię" [ref=e127]:
+              - /placeholder: Wprowadź imię
+          - generic [ref=e133]:
+            - generic:
+              - generic: Nazwisko
+            - textbox "Nazwisko" [ref=e135]:
+              - /placeholder: Wprowadź nazwisko
+          - generic [ref=e141]:
+            - generic:
+              - generic: Email
+            - textbox "Email" [ref=e143]:
+              - /placeholder: Wprowadź email
+          - generic [ref=e149]:
+            - generic:
+              - generic: Hasło
+            - textbox "Hasło" [ref=e151]:
+              - /placeholder: Minimum 8 znaków
+          - generic [ref=e157] [cursor=pointer]:
+            - generic:
+              - generic: Rola
+            - generic [ref=e159]:
+              - generic [ref=e160]: Wybierz rolę
+              - button "Rola, Wybierz rolę" [ref=e161]
+            - img [ref=e162]:
+              - img [ref=e164]
+          - button "Dodaj użytkownika" [ref=e167] [cursor=pointer]:
+            - generic [ref=e168]:
+              - generic: Dodaj użytkownika

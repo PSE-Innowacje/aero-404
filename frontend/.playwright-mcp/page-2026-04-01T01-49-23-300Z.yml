@@ -1,0 +1,227 @@
+- generic [ref=e3]:
+  - generic:
+    - navigation "menu" [ref=e4]:
+      - generic [ref=e5]:
+        - generic:
+          - generic [ref=e10]:
+            - generic: AERO
+          - generic [ref=e13]:
+            - generic:
+              - list [ref=e14]:
+                - generic [ref=e16]:
+                  - generic: Administracja
+                - listitem [ref=e17]:
+                  - link "Helikoptery" [ref=e18] [cursor=pointer]:
+                    - /url: /admin/helicopters
+                    - img [ref=e19]:
+                      - img [ref=e21]
+                    - generic [ref=e29]: Helikoptery
+                - listitem [ref=e30]:
+                  - link "Członkowie załogi" [ref=e31] [cursor=pointer]:
+                    - /url: /admin/crew
+                    - img [ref=e32]:
+                      - img [ref=e34]
+                    - generic [ref=e41]: Członkowie załogi
+                - listitem [ref=e42]:
+                  - link "Lądowiska planowe" [ref=e43] [cursor=pointer]:
+                    - /url: /admin/landing-sites
+                    - img [ref=e44]:
+                      - img [ref=e46]
+                    - generic [ref=e51]: Lądowiska planowe
+                - listitem [ref=e52]:
+                  - link "Użytkownicy" [ref=e53] [cursor=pointer]:
+                    - /url: /admin/users
+                    - img [ref=e54]:
+                      - img [ref=e56]
+                    - generic [ref=e61]: Użytkownicy
+              - list [ref=e62]:
+                - generic [ref=e64]:
+                  - generic: Planowanie operacji
+                - listitem [ref=e65]:
+                  - link "Lista operacji" [ref=e66] [cursor=pointer]:
+                    - /url: /operations
+                    - img [ref=e67]:
+                      - img [ref=e69]
+                    - generic [ref=e74]: Lista operacji
+              - list [ref=e75]:
+                - generic [ref=e77]:
+                  - generic: Zlecenia na lot
+                - listitem [ref=e78]:
+                  - link "Lista zleceń" [ref=e79] [cursor=pointer]:
+                    - /url: /flight-tickets
+                    - img [ref=e80]:
+                      - img [ref=e82]
+                    - generic [ref=e89]: Lista zleceń
+              - list [ref=e90]:
+                - generic [ref=e92]:
+                  - generic: Użytkownik
+                - listitem [ref=e93]:
+                  - button "Wyloguj" [ref=e94] [cursor=pointer]:
+                    - img [ref=e95]:
+                      - img [ref=e97]
+                    - generic [ref=e101]: Wyloguj
+    - generic [ref=e141]:
+      - banner [ref=e142]:
+        - generic [ref=e144]:
+          - button "Wróć" [ref=e147] [cursor=pointer]:
+            - generic [ref=e148]:
+              - img:
+                - generic:
+                  - img
+              - generic [ref=e149]: Wróć
+          - generic [ref=e152]:
+            - generic: Edytuj zlecenie na lot
+      - main [ref=e153]:
+        - generic [ref=e156]:
+          - generic:
+            - generic [ref=e159]:
+              - generic [ref=e161]:
+                - paragraph [ref=e162]:
+                  - strong [ref=e163]: "Nr zlecenia:"
+                  - text: FO-2026-119C9C77
+                - paragraph [ref=e164]:
+                  - strong [ref=e165]: "Waga załogi:"
+                  - text: 224 kg
+                - paragraph [ref=e166]:
+                  - strong [ref=e167]: "Trasa:"
+                  - text: 1 km
+              - generic [ref=e168]:
+                - generic: Zaakceptowane
+            - paragraph [ref=e169]:
+              - strong [ref=e170]: "Powiązane operacje:"
+            - list [ref=e171]:
+              - listitem [ref=e172]:
+                - link "OP-2026-B85F11DB 33" [ref=e173] [cursor=pointer]:
+                  - /url: /operations/edit/3
+                  - generic [ref=e176]:
+                    - heading "OP-2026-B85F11DB" [level=3] [ref=e177]
+                    - paragraph [ref=e178]: "33"
+            - paragraph [ref=e179]:
+              - strong [ref=e180]: "Członkowie załogi:"
+            - list [ref=e181]:
+              - listitem [ref=e182]:
+                - 'link "22 33 Data ważności licencji: 08.09.2027 Data ważności szkolenia: 15.06.2028 PILOT" [ref=e183] [cursor=pointer]':
+                  - /url: /admin/crew/edit/3
+                  - generic [ref=e184]:
+                    - generic [ref=e186]:
+                      - heading "22 33" [level=3] [ref=e187]
+                      - paragraph [ref=e188]: "Data ważności licencji: 08.09.2027"
+                      - paragraph [ref=e189]: "Data ważności szkolenia: 15.06.2028"
+                    - generic [ref=e190]:
+                      - generic: PILOT
+            - button "Zakończ" [ref=e193] [cursor=pointer]:
+              - generic [ref=e194]:
+                - generic: Zakończ
+            - generic [ref=e195]:
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic: Helikopter
+                            - generic:
+                              - generic:
+                                - generic: SP-HAA — Robinson R44
+                                - button "Helikopter, SP-HAA — Robinson R44" [disabled]
+                            - img:
+                              - generic:
+                                - img
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic: Pilot
+                            - generic:
+                              - generic:
+                                - generic: 22 33
+                                - button "Pilot, 22 33" [disabled]
+                            - img:
+                              - generic:
+                                - img
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic: Załoga
+                            - generic:
+                              - generic:
+                                - generic: 22 33 (PILOT)
+                                - button "Załoga, 22 33 (PILOT)" [disabled]
+                            - img:
+                              - generic:
+                                - img
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic: Lotnisko wylotu
+                            - generic:
+                              - generic:
+                                - generic: "2"
+                                - button "Lotnisko wylotu, 2" [disabled]
+                            - img:
+                              - generic:
+                                - img
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic: Lotnisko przylotu
+                            - generic:
+                              - generic:
+                                - generic: "2"
+                                - button "Lotnisko przylotu, 2" [disabled]
+                            - img:
+                              - generic:
+                                - img
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic: Operacje
+                            - generic:
+                              - generic:
+                                - generic: Wybierz operacje
+                                - button "Operacje, Wybierz operacje" [disabled]
+                            - img:
+                              - generic:
+                                - img
+              - generic [ref=e201]:
+                - generic:
+                  - generic: Planowany wylot
+                - textbox "Planowany wylot" [disabled] [ref=e203]:
+                  - /placeholder: ""
+                  - text: 2026-04-01T00:39
+              - generic [ref=e209]:
+                - generic:
+                  - generic: Planowane lądowanie
+                - textbox "Planowane lądowanie" [disabled] [ref=e211]:
+                  - /placeholder: ""
+                  - text: 2026-05-01T00:39
+              - generic [ref=e217]:
+                - generic:
+                  - generic: Szacowana trasa (km)
+                - spinbutton "Szacowana trasa (km)" [disabled] [ref=e219]: "1"
