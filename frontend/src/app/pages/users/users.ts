@@ -21,13 +21,7 @@ import { UserDataService } from '../../services/user-data.service';
 import { UsersApiService } from '../../services/users-api.service';
 import { UserResponseDto } from '../../models/user.model';
 import { getErrorMessage } from '../../shared/utils/error-messages';
-
-const ROLE_LABELS: Record<string, string> = {
-  ADMIN: 'Administrator',
-  PLANNER: 'Osoba planująca',
-  SUPERVISOR: 'Osoba nadzorująca',
-  PILOT: 'Pilot',
-};
+import { roleLabel as roleLabelFn } from '../../shared/utils/role-labels';
 
 @Component({
   selector: 'app-users',
@@ -66,7 +60,7 @@ export class UsersPage  {
   }
 
   roleLabel(role: string): string {
-    return ROLE_LABELS[role] ?? role;
+    return roleLabelFn(role);
   }
 
   private loadUsers(): void {

@@ -1,12 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
-import {
-  AbstractControl,
-  FormBuilder,
-  FormGroup,
-  ReactiveFormsModule,
-  ValidationErrors,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ViewWillEnter } from '@ionic/angular';
 import {
@@ -38,6 +31,7 @@ import { AirfieldResponseDto } from '../../models/airfield.model';
 import { PlannedOperationResponseDto } from '../../models/planned-operation.model';
 import { ErrorMessage, FieldErrorsComponent } from '../../shared/field-errors/field-errors';
 import { getErrorMessage } from '../../shared/utils/error-messages';
+import { dateRangeValidator } from '../../shared/validators/date-range.validator';
 
 @Component({
   selector: 'app-flight-ticket-add',
@@ -117,23 +111,8 @@ export class FlightTicketAddPage implements ViewWillEnter {
       operationIds: [[] as number[], [Validators.required]],
       estimatedRouteKm: [null as number | null, [Validators.required, Validators.min(1)]],
     },
-    { validators: [FlightTicketAddPage.dateRangeValidator] },
+    { validators: [dateRangeValidator('plannedDeparture', 'plannedLanding')] },
   );
-
-  private static dateRangeValidator(group: AbstractControl): ValidationErrors | null {
-    const from = group.get('plannedDeparture')?.value;
-    const to = group.get('plannedLanding')?.value;
-    if (from && to && from > to) {
-      group.get('plannedLanding')?.setErrors({ dateRange: true });
-      return { dateRange: true };
-    }
-    const toCtrl = group.get('plannedLanding');
-    if (toCtrl?.hasError('dateRange')) {
-      const { dateRange, ...rest } = toCtrl.errors!;
-      toCtrl.setErrors(Object.keys(rest).length ? rest : null);
-    }
-    return null;
-  }
 
   ionViewWillEnter(): void {
     this.loadDropdownData();

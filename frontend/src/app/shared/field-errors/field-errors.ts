@@ -1,11 +1,9 @@
 import { Component, input } from '@angular/core';
 import { AbstractControl, ValidationErrors } from '@angular/forms';
 import { IonNote } from '@ionic/angular/standalone';
+import { ErrorMessage, getFirstFieldError } from '../utils/field-error-lookup';
 
-export interface ErrorMessage {
-  key: string;
-  message: string;
-}
+export type { ErrorMessage } from '../utils/field-error-lookup';
 
 @Component({
   selector: 'app-field-errors',
@@ -30,9 +28,6 @@ export class FieldErrorsComponent {
   messages = input.required<ErrorMessage[]>();
 
   getFirstError(errors: ValidationErrors): string {
-    for (const msg of this.messages()) {
-      if (errors[msg.key]) return msg.message;
-    }
-    return 'Nieprawidłowa wartość.';
+    return getFirstFieldError(errors, this.messages());
   }
 }
