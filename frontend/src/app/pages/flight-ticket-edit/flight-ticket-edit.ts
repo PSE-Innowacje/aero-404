@@ -129,7 +129,10 @@ export class FlightTicketEditPage implements OnInit {
   deleteModalOpen = signal(false);
   deleting = signal(false);
 
+  isPilot = computed(() => this.userDataService.role() === 'PILOT');
+
   canEdit = computed(() => {
+    if (!this.isPilot()) return false;
     const status = this.order()?.status;
     return status === 'INTRODUCED' || status === 'REJECTED';
   });

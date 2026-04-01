@@ -120,6 +120,16 @@ export class OperationEditPage implements OnInit {
   routePoints = signal<[number, number][]>([]);
   changingStatus = signal(false);
 
+  canEdit = computed(() => {
+    const role = this.userDataService.role();
+    if (role === 'SUPERVISOR') return true;
+    if (role === 'PLANNER') {
+      const status = this.operation()?.status;
+      return status !== 'DONE' && status !== 'REJECTED';
+    }
+    return false;
+  });
+
   canReject = computed(() => {
     return this.userDataService.role() === 'SUPERVISOR' && this.operation()?.status === 'INTRODUCED';
   });
@@ -378,6 +388,9 @@ export class OperationEditPage implements OnInit {
           additionalInfo: op.additionalInfo ?? '',
           contactEmails: op.contactEmails ?? '',
         });
+        if (!this.canEdit()) {
+          this.form.disable();
+        }
         this.loadingData.set(false);
       },
       error: (err) => {
