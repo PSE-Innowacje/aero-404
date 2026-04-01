@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: aero
+  datasource:
+    # Dane połączenia - Spring pobierze je ze zmiennych środowiskowych na Renderze
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    # Hibernate - automatyczne tworzenie/aktualizacja tabel
+    hibernate:
+      ddl-auto: update
+    # Opcjonalnie: pokazywanie zapytań SQL w logach
+    show-sql: true
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:your-super-secret-key-change-this-in-production-at-least-32-characters-long}
+    expiration: ${JWT_EXPIRATION:86400000}
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
