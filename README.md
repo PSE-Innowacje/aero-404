@@ -86,7 +86,35 @@ Aplikacja podparta testami jednostkowymi oraz e2e.
 
 ## Backend
 
-- **@todo**
+  ### Stack technologiczny                                                                                                                                                                                                                    
+  Java 21, Spring Boot 3.4, Spring Security (JWT po zalogowaniu), Spring Data JPA, PostgreSQL, Lombok, Springdoc OpenAPI 3, Maven.                                                                                                           
+  ### Architektura
+
+  - Klasyczna architektura warstwowa — controller, service, repository, domain, dto, mapper
+  - Czytelna, testowalna, łatwa do rozszerzania
+  - DTO pattern — bez zwracania encji JPA z kontrolera
+  - Bean Validation na wejściu, GlobalExceptionHandler na wyjściu
+
+  ### Deploy
+
+  - Render.com — aplikacja + baza PostgreSQL
+  - Automatyczne połączenie z repo na GitHubie
+  - Po każdym pushu automatyczny deploy
+  - Zero ręcznej konfiguracji
+
+  ### Testy
+
+  - **Walidacja danych wejściowych** — odrzucanie błędnych danych (brakujące pola, złe formaty, przekroczone limity)
+  - **Testy security** — dostęp do endpointów per rola (ADMIN, PLANNER, SUPERVISOR, PILOT) wg matrycy PRD
+  - **Test integracyjny** — pełny cykl życia zlecenia z bazą H2 (create → submit → accept → complete), kaskadowe zmiany statusów operacji
+
+  ### Współpraca z Claude
+
+  - Ani jedna linijka kodu napisana ręcznie — cały backend wygenerowany przez Claude
+  - Na start: tryb planowania, przesłany PRD, pytanie o plan pracy
+  - Claude: propozycja plików pomocniczych, podział na fazy i podpunkty → plik `PLAN.md`
+  - Dalsza praca: "Jedziemy z punktem 2.2" → gotowy kod
+  - Skomplikowane elementy: tryb planowania, weryfikacja wymagań PRD przed generowaniem kodu
 
 ## 🔹 ⭐ Dodatkowo - poza zakresem
 
