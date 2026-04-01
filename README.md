@@ -11,29 +11,29 @@
 
 Claude Code v2.1.89 Opus 4.6 (1M context) with medium effort · Claude Team
 
-## Pluginy
+### Pluginy
 - context7 · claude-plugins-official
 - playwright Browser automation and end-to-end testing
 
-## Agents
+### Agents
 
 - Agent do przeszukiwania dokumetacji `tools: WebFetch, WebSearch, Skill, MCPSearch`, kryteria uzycia: Context7, docs/llms.txt, 
 
-## Skills
+### Skills
 
 - web-security (Wymuszanie bezpieczeństwa webowego i unikanie podatności)
 -  angular-developer (Generowanie kodu Angular i wskazówki architektoniczne komponenty, sygnały, routing, SSR, testy, CLI — autor: Google) `angular-animations`, `angular-aria`, `cli`, `component-harnesses`, `components`, `component-styling`, `creating-services`, `data-resolvers`, `define-routes`, `defining-providers`, `di-fundamentals`, `e2e-testing`, `effects`, `hierarchical-injectors`, `host-elements`, `injection-context`, `inputs`, `linked-signal`, `loading-strategies`, `mcp`, `navigate-to-routes`, `outputs`, `reactive-forms`, `rendering-strategies`, `resource`, `route-animations`, `route-guards`, `router-lifecycle`, `router-testing`, `show-routes-with-outlets`, `signal-forms`, `signals-overview`, `tailwind-css`, `template-driven-forms`, `testing-fundamentals`
 
-## Commands
+### Commands
 
 - komenda do refaktoryacji kodu /szukaj-i-popraw BUG,SECURITY 
 
-## MCP
+### MCP
 - angular-cli
 - context7
 - playwright
 
-## MCP
+### Plik `.claude/settings.json`
  ```json
 {
   "sandbox": {
