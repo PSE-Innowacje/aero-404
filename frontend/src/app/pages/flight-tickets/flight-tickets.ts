@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ViewWillEnter } from '@ionic/angular';
 import {
@@ -24,6 +24,7 @@ import {
   FlightOrderResponseDto,
   FlightOrderStatus,
 } from '../../models/flight-order.model';
+import { UserDataService } from '../../services/user-data.service';
 import { getErrorMessage } from '../../shared/utils/error-messages';
 
 const STATUS_LABELS: Record<FlightOrderStatus, string> = {
@@ -71,7 +72,9 @@ const STATUS_COLORS: Record<FlightOrderStatus, string> = {
 })
 export class FlightTicketsPage implements ViewWillEnter {
   private flightOrderApi = inject(FlightOrderApiService);
+  private userDataService = inject(UserDataService);
 
+  isPilot = computed(() => this.userDataService.role() === 'PILOT');
   orders = signal<FlightOrderResponseDto[]>([]);
   loading = signal(true);
   errorMessage = signal('');

@@ -75,7 +75,7 @@
         }
 
         <div class="status-actions ion-margin-top ion-margin-bottom">
-          @if (canSubmit()) {
+          @if (canSubmit() && isPilot()) {
             <ion-button
               color="tertiary"
               fill="outline"
