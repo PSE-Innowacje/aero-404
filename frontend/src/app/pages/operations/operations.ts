@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ViewWillEnter } from '@ionic/angular';
 import {
@@ -24,6 +24,7 @@ import {
   OperationStatus,
   PlannedOperationResponseDto,
 } from '../../models/planned-operation.model';
+import { UserDataService } from '../../services/user-data.service';
 import { getErrorMessage } from '../../shared/utils/error-messages';
 
 const STATUS_LABELS: Record<OperationStatus, string> = {
@@ -71,7 +72,12 @@ const STATUS_COLORS: Record<OperationStatus, string> = {
 })
 export class OperationsPage implements ViewWillEnter {
   private operationApi = inject(PlannedOperationApiService);
+  private userDataService = inject(UserDataService);
 
+  canCreate = computed(() => {
+    const role = this.userDataService.role();
+    return role === 'PLANNER' || role === 'SUPERVISOR';
+  });
   operations = signal<PlannedOperationResponseDto[]>([]);
   loading = signal(true);
   errorMessage = signal('');
