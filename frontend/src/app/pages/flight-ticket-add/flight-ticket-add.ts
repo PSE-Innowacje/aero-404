@@ -129,7 +129,8 @@ export class FlightTicketAddPage implements ViewWillEnter {
     }
     const toCtrl = group.get('plannedLanding');
     if (toCtrl?.hasError('dateRange')) {
-      toCtrl.setErrors(null);
+      const { dateRange, ...rest } = toCtrl.errors!;
+      toCtrl.setErrors(Object.keys(rest).length ? rest : null);
     }
     return null;
   }

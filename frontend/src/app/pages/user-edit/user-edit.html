@@ -106,7 +106,8 @@
   <app-confirm-delete-modal
     [isOpen]="deleteModalOpen()"
     [deleting]="deleting()"
-    message="Czy na pewno chcesz usunąć tego użytkownika?"
+    prefix="Czy na pewno chcesz usunąć"
+    entityName="tego użytkownika"
     (confirm)="confirmDelete()"
     (dismiss)="closeDeleteModal()"
   />

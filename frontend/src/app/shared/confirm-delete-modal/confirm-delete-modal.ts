@@ -21,7 +21,7 @@ import {
           </ion-toolbar>
         </ion-header>
         <ion-content class="ion-padding delete-modal-content">
-          <p [innerHTML]="message()"></p>
+          <p>{{ prefix() }} <strong>{{ entityName() }}</strong>?</p>
         </ion-content>
         <ion-footer>
           <div class="delete-modal-actions">
@@ -60,7 +60,8 @@ import {
 export class ConfirmDeleteModalComponent {
   isOpen = input.required<boolean>();
   deleting = input.required<boolean>();
-  message = input.required<string>();
+  prefix = input<string>('Czy na pewno chcesz usunąć');
+  entityName = input.required<string>();
 
   confirm = output<void>();
   dismiss = output<void>();

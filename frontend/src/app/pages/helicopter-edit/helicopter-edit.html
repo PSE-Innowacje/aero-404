@@ -149,7 +149,8 @@
     <app-confirm-delete-modal
       [isOpen]="deleteModalOpen()"
       [deleting]="deleting()"
-      [message]="'Czy na pewno chcesz usunąć helikopter <strong>' + form.get('regNumber')?.value + '</strong>?'"
+      prefix="Czy na pewno chcesz usunąć helikopter"
+      [entityName]="form.get('regNumber')?.value"
       (confirm)="confirmDelete()"
       (dismiss)="closeDeleteModal()"
     />

@@ -46,7 +46,6 @@ import { HelicopterResponseDto } from '../../models/helicopter.model';
 import { CrewMemberResponseDto } from '../../models/crew.model';
 import { AirfieldResponseDto } from '../../models/airfield.model';
 import { PlannedOperationResponseDto } from '../../models/planned-operation.model';
-import { ConfirmDeleteModalComponent } from '../../shared/confirm-delete-modal/confirm-delete-modal';
 import { ErrorMessage, FieldErrorsComponent } from '../../shared/field-errors/field-errors';
 import { getErrorMessage } from '../../shared/utils/error-messages';
 import { UserDataService } from '../../services/user-data.service';
@@ -76,7 +75,6 @@ const STATUS_COLORS: Record<FlightOrderStatus, string> = {
   imports: [
     DatePipe,
     ReactiveFormsModule,
-    ConfirmDeleteModalComponent,
     FieldErrorsComponent,
     IonBackButton,
     IonBadge,
@@ -126,8 +124,6 @@ export class FlightTicketEditPage implements OnInit {
   saving = signal(false);
   changingStatus = signal(false);
   errorMessage = signal('');
-  deleteModalOpen = signal(false);
-  deleting = signal(false);
 
   isPilot = computed(() => this.userDataService.role() === 'PILOT');
 
@@ -138,7 +134,7 @@ export class FlightTicketEditPage implements OnInit {
   });
 
   canSubmit = computed(() => {
-    return this.order()?.status === 'INTRODUCED';
+    return this.isPilot() && this.order()?.status === 'INTRODUCED';
   });
 
   canAccept = computed(() => {
@@ -154,7 +150,7 @@ export class FlightTicketEditPage implements OnInit {
   });
 
   canComplete = computed(() => {
-    return this.order()?.status === 'ACCEPTED';
+    return this.isPilot() && this.order()?.status === 'ACCEPTED';
   });
 
   helicopterIdErrors: ErrorMessage[] = [
@@ -207,7 +203,8 @@ export class FlightTicketEditPage implements OnInit {
     }
     const toCtrl = group.get('plannedLanding');
     if (toCtrl?.hasError('dateRange')) {
-      toCtrl.setErrors(null);
+      const { dateRange, ...rest } = toCtrl.errors!;
+      toCtrl.setErrors(Object.keys(rest).length ? rest : null);
     }
     return null;
   }
@@ -344,24 +341,6 @@ export class FlightTicketEditPage implements OnInit {
       ],
     });
     await resultAlert.present();
-  }
-
-  openDeleteModal(): void {
-    this.deleteModalOpen.set(true);
-  }
-
-  closeDeleteModal(): void {
-    this.deleteModalOpen.set(false);
-  }
-
-  confirmDelete(): void {
-    this.deleting.set(true);
-    this.flightOrderApi.update(this.orderId, this.form.getRawValue()).subscribe({
-      error: () => {
-        this.deleting.set(false);
-        this.closeDeleteModal();
-      },
-    });
   }
 
   reload(): void {

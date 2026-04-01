@@ -190,7 +190,8 @@ export class OperationEditPage implements OnInit {
     }
     const toCtrl = group.get('proposedDateTo');
     if (toCtrl?.hasError('dateRange')) {
-      toCtrl.setErrors(null);
+      const { dateRange, ...rest } = toCtrl.errors!;
+      toCtrl.setErrors(Object.keys(rest).length ? rest : null);
     }
     return null;
   }
@@ -373,7 +374,6 @@ export class OperationEditPage implements OnInit {
     this.operationApi.getById(this.operationId).subscribe({
       next: (op) => {
         this.operation.set(op);
-        console.log(op.routePoints)
         try {
           this.routePoints.set(op.routePoints ? JSON.parse(op.routePoints) : []);
         } catch {

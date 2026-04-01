@@ -144,7 +144,8 @@
     <app-confirm-delete-modal
       [isOpen]="deleteModalOpen()"
       [deleting]="deleting()"
-      [message]="'Czy na pewno chcesz usunąć członka załogi <strong>' + form.get('firstName')?.value + ' ' + form.get('lastName')?.value + '</strong>?'"
+      prefix="Czy na pewno chcesz usunąć członka załogi"
+      [entityName]="form.get('firstName')?.value + ' ' + form.get('lastName')?.value"
       (confirm)="confirmDelete()"
       (dismiss)="closeDeleteModal()"
     />

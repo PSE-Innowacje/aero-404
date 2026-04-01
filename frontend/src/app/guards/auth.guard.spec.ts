@@ -19,6 +19,12 @@ const localStorageMock = (() => {
   };
 })();
 
+function createJwt(exp: number): string {
+  const header = btoa(JSON.stringify({ alg: 'HS256' }));
+  const payload = btoa(JSON.stringify({ exp }));
+  return `${header}.${payload}.signature`;
+}
+
 describe('authGuard', () => {
   let userDataService: UserDataService;
   let router: Router;
@@ -43,15 +49,30 @@ describe('authGuard', () => {
     vi.restoreAllMocks();
   });
 
-  it('should allow access when user is logged in with token', () => {
+  it('should allow access when user is logged in with valid token', () => {
+    const futureExp = Math.floor(Date.now() / 1000) + 3600;
     userDataService.setUser({
-      token: 'valid-token',
+      token: createJwt(futureExp),
       email: 'test@test.pl',
       role: 'ADMIN',
     });
 
     const result = TestBed.runInInjectionContext(() => authGuard({} as any, {} as any));
     expect(result).toBe(true);
+  });
+
+  it('should redirect when token is expired', () => {
+    const pastExp = Math.floor(Date.now() / 1000) - 3600;
+    userDataService.setUser({
+      token: createJwt(pastExp),
+      email: 'test@test.pl',
+      role: 'ADMIN',
+    });
+
+    const result = TestBed.runInInjectionContext(() => authGuard({} as any, {} as any));
+    expect(result).not.toBe(true);
+    expect(router.createUrlTree).toHaveBeenCalledWith(['/login']);
+    expect(userDataService.isLoggedIn()).toBe(false);
   });
 
   it('should redirect to /login when user is not logged in', () => {

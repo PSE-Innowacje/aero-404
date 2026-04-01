@@ -290,14 +290,5 @@
       </form>
     }
 
-    @if (order(); as o) {
-      <app-confirm-delete-modal
-        [isOpen]="deleteModalOpen()"
-        [deleting]="deleting()"
-        [message]="'Czy na pewno chcesz usunąć zlecenie <strong>' + o.autoNumber + '</strong>?'"
-        (confirm)="confirmDelete()"
-        (dismiss)="closeDeleteModal()"
-      />
-    }
   </ion-grid>
 </ion-content>

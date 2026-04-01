@@ -190,7 +190,8 @@
     <app-confirm-delete-modal
       [isOpen]="deleteModalOpen()"
       [deleting]="deleting()"
-      [message]="'Czy na pewno chcesz usunąć operację <strong>' + (operation()?.autoNumber ?? '') + '</strong>?'"
+      prefix="Czy na pewno chcesz usunąć operację"
+      [entityName]="operation()?.autoNumber ?? ''"
       (confirm)="confirmDelete()"
       (dismiss)="closeDeleteModal()"
     />

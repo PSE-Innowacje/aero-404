@@ -96,7 +96,8 @@
     <app-confirm-delete-modal
       [isOpen]="deleteModalOpen()"
       [deleting]="deleting()"
-      [message]="'Czy na pewno chcesz usunąć lądowisko <strong>' + form.get('name')?.value + '</strong>?'"
+      prefix="Czy na pewno chcesz usunąć lądowisko"
+      [entityName]="form.get('name')?.value"
       (confirm)="confirmDelete()"
       (dismiss)="closeDeleteModal()"
     />
