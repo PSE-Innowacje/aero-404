@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map, startWith } from 'rxjs';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -24,6 +24,7 @@ import { ConfirmDeleteModalComponent } from '../../shared/confirm-delete-modal/c
 import { AirfieldApiService } from '../../services/airfield-api.service';
 import { ErrorMessage, FieldErrorsComponent } from '../../shared/field-errors/field-errors';
 import { MapLandingComponent } from '../../shared/map-landing/map-landing';
+import { UserDataService } from '../../services/user-data.service';
 import { getErrorMessage } from '../../shared/utils/error-messages';
 
 @Component({
@@ -56,7 +57,9 @@ export class LandingSiteEditPage implements OnInit {
   private router = inject(Router);
   private route = inject(ActivatedRoute);
   private toastCtrl = inject(ToastController);
+  private userDataService = inject(UserDataService);
 
+  isAdmin = computed(() => this.userDataService.role() === 'ADMIN');
   loadingData = signal(true);
   loadError = signal(false);
   saving = signal(false);
@@ -178,6 +181,9 @@ export class LandingSiteEditPage implements OnInit {
           latitude: airfield.latitude,
           longitude: airfield.longitude,
         });
+        if (!this.isAdmin()) {
+          this.form.disable();
+        }
         this.loadingData.set(false);
       },
       error: (err) => {

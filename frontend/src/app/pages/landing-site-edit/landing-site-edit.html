@@ -65,23 +65,25 @@
       </ion-item>
       <app-field-errors [control]="form.get('longitude')" [messages]="longitudeErrors" />
 
-      <ion-button
-        expand="block"
-        fill="outline"
-        color="danger"
-        class="ion-margin-top"
-        (click)="openDeleteModal()"
-      >
-        Usuń
-      </ion-button>
+      @if (isAdmin()) {
+        <ion-button
+          expand="block"
+          fill="outline"
+          color="danger"
+          class="ion-margin-top"
+          (click)="openDeleteModal()"
+        >
+          Usuń
+        </ion-button>
 
-      <ion-button expand="block" type="submit" [disabled]="saving()" class="ion-margin-top">
-        @if (saving()) {
-          <ion-spinner name="crescent" />
-        } @else {
-          Zapisz zmiany
-        }
-      </ion-button>
+        <ion-button expand="block" type="submit" [disabled]="saving()" class="ion-margin-top">
+          @if (saving()) {
+            <ion-spinner name="crescent" />
+          } @else {
+            Zapisz zmiany
+          }
+        </ion-button>
+      }
     </form>
 
     <app-map-landing

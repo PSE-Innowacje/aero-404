@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { ViewWillEnter } from '@ionic/angular';
 import { RouterLink } from '@angular/router';
 import {
@@ -19,6 +19,7 @@ import {
 
 import { AirfieldApiService } from '../../services/airfield-api.service';
 import { AirfieldResponseDto } from '../../models/airfield.model';
+import { UserDataService } from '../../services/user-data.service';
 import { getErrorMessage } from '../../shared/utils/error-messages';
 
 @Component({
@@ -44,7 +45,9 @@ import { getErrorMessage } from '../../shared/utils/error-messages';
 })
 export class LandingSitesPage implements ViewWillEnter {
   private airfieldApi = inject(AirfieldApiService);
+  private userDataService = inject(UserDataService);
 
+  isAdmin = computed(() => this.userDataService.role() === 'ADMIN');
   airfields = signal<AirfieldResponseDto[]>([]);
   loading = signal(true);
   errorMessage = signal('');

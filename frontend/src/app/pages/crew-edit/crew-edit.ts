@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import {
@@ -25,6 +25,7 @@ import { CrewApiService } from '../../services/crew-api.service';
 import { CrewRole } from '../../models/crew.model';
 import { ErrorMessage, FieldErrorsComponent } from '../../shared/field-errors/field-errors';
 import { emailValidator } from '../../shared/validators/email.validator';
+import { UserDataService } from '../../services/user-data.service';
 import { getErrorMessage } from '../../shared/utils/error-messages';
 
 const ROLE_OPTIONS: { value: CrewRole; label: string }[] = [
@@ -63,7 +64,9 @@ export class CrewEditPage implements OnInit {
   private router = inject(Router);
   private route = inject(ActivatedRoute);
   private toastCtrl = inject(ToastController);
+  private userDataService = inject(UserDataService);
 
+  isAdmin = computed(() => this.userDataService.role() === 'ADMIN');
   loadingData = signal(true);
   loadError = signal(false);
   saving = signal(false);
@@ -205,6 +208,9 @@ export class CrewEditPage implements OnInit {
           licenseExpiry: member.licenseExpiry ?? '',
           trainingExpiry: member.trainingExpiry ?? '',
         });
+        if (!this.isAdmin()) {
+          this.form.disable();
+        }
         this.loadingData.set(false);
       },
       error: (err) => {

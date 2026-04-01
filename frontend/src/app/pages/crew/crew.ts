@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { ViewWillEnter } from '@ionic/angular';
 import { RouterLink } from '@angular/router';
 import {
@@ -20,6 +20,7 @@ import {
 
 import { CrewApiService } from '../../services/crew-api.service';
 import { CrewMemberResponseDto } from '../../models/crew.model';
+import { UserDataService } from '../../services/user-data.service';
 import { getErrorMessage } from '../../shared/utils/error-messages';
 
 const ROLE_LABELS: Record<string, string> = {
@@ -51,7 +52,9 @@ const ROLE_LABELS: Record<string, string> = {
 })
 export class CrewPage implements ViewWillEnter {
   private crewApi = inject(CrewApiService);
+  private userDataService = inject(UserDataService);
 
+  isAdmin = computed(() => this.userDataService.role() === 'ADMIN');
   crew = signal<CrewMemberResponseDto[]>([]);
   loading = signal(true);
   errorMessage = signal('');
