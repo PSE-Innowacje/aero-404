@@ -35,14 +35,16 @@
             <ion-icon slot="start" name="location-outline" />
             <ion-label>Lądowiska planowe</ion-label>
           </ion-item>
-          <ion-item
-            routerLink="/admin/users"
-            routerLinkActive="active-item"
-            routerDirection="root"
-          >
-            <ion-icon slot="start" name="person-outline" />
-            <ion-label>Użytkownicy</ion-label>
-          </ion-item>
+          @if (role() === 'ADMIN') {
+            <ion-item
+              routerLink="/admin/users"
+              routerLinkActive="active-item"
+              routerDirection="root"
+            >
+              <ion-icon slot="start" name="person-outline" />
+              <ion-label>Użytkownicy</ion-label>
+            </ion-item>
+          }
         </ion-list>
         }
 
