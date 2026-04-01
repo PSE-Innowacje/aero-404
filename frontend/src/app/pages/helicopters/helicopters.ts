@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { ViewWillEnter } from '@ionic/angular';
 import { RouterLink } from '@angular/router';
 import {
@@ -19,6 +19,7 @@ import {
 } from '@ionic/angular/standalone';
 
 import { HelicopterApiService } from '../../services/helicopter-api.service';
+import { UserDataService } from '../../services/user-data.service';
 import { HelicopterResponseDto, HelicopterStatus } from '../../models/helicopter.model';
 import { getErrorMessage } from '../../shared/utils/error-messages';
 
@@ -56,7 +57,9 @@ const STATUS_COLORS: Record<HelicopterStatus, string> = {
 })
 export class HelicoptersPage implements ViewWillEnter {
   private helicopterApi = inject(HelicopterApiService);
+  private userDataService = inject(UserDataService);
 
+  isAdmin = computed(() => this.userDataService.role() === 'ADMIN');
   helicopters = signal<HelicopterResponseDto[]>([]);
   loading = signal(true);
   errorMessage = signal('');
